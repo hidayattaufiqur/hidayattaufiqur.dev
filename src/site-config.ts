@@ -8,6 +8,7 @@ export const siteConfig = {
     alt: 'Website Main Image',
   },
   email: 'hidayattaufiqur@gmail.com',
+  handle: '@hidayattaufiqur',
   socialLinks: [
     {
       text: 'GitHub',
@@ -31,12 +32,6 @@ export const siteConfig = {
       href: 'https://instagram.com/hidayattaufiqur',
       icon: 'i-simple-icons-instagram',
     },
-    {
-      text: 'Discord',
-      href: 'https://discord.com/users/384880233288957952',
-      icon: 'simple-icons:discord',
-      header: 'ic:baseline-discord',
-    },
   ],
   header: {
     logo: {
@@ -54,10 +49,6 @@ export const siteConfig = {
         href: '/blog',
       },
       {
-        text: 'Notes',
-        href: '/blog/notes',
-      },
-      {
         text: 'Projects',
         href: '/projects',
       },
@@ -65,10 +56,6 @@ export const siteConfig = {
   },
   page: {
     blogLinks: [
-      {
-        text: 'Index',
-        href: '/',
-      },
       {
         text: 'Blog',
         href: '/blog',
@@ -85,14 +72,14 @@ export const siteConfig = {
   },
   footer: {
     navLinks: [
-      {
-        text: 'Posts Props',
-        href: '/posts-props',
-      },
-      {
-        text: 'Markdown Style',
-        href: '/md-style',
-      },
+      // {
+      //   text: 'Posts Props',
+      //   href: '/posts-props',
+      // },
+      // {
+      //   text: 'Markdown Style',
+      //   href: '/md-style',
+      // },
     ],
   },
 }

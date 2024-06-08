@@ -5,127 +5,130 @@ import siteConfig from '@/site-config'
 
 <BaseLayout description={siteConfig.description}>
   <article class="prose lg:prose-xl">
-    <h1 class="text-title text-5xl font-bold">Hi, Welcome!</h1>
     <p class="mt-4 text-lg">
-      My name is <br />
-      <b class="text-white-600">{siteConfig.author}</b>
+      <b class="text-2xl text-white-600">{siteConfig.author}</b>
+      <br />
+      <b class="text-sm text-white-300">@hidayattaufiqur</b>
     </p>
     <p class="mt-6 text-lg">
       I am a <b>last-year Informatics student and a Backend Engineer</b>. I am
-      also passionate about learning and exploring various fields in software
-      engineering such as <b
-        >system engineering, frontend engineering, DevOps, competitive
-        programming, and more</b
+      interested in various other fields within Software Engineering realm such
+      as <b
+        >System Engineering, Frontend Engineering, DevOps, Competitive
+        Programming, and more</b
       >.
     </p>
 
     <!-- Technologies Section -->
-    <section class="mt-10">
+    <section class="mt-12">
       <h3 class="text-xl font-bold mb-3">
         Technologies that I use (but not limited to):
       </h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+      <div
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+      >
         <div class="flex items-center">
-          <i class="fab fa-js-square text-xl mr-3"></i>
+          <i class="fab fa-js-square text-xl mr-2"></i>
           <span class="text-lg">JavaScript</span>
         </div>
         <div class="flex items-center">
-          <i class="fab fa-node-js text-xl mr-3"></i>
+          <i class="fab fa-node-js text-xl mr-2"></i>
           <span class="text-lg">Node.js</span>
         </div>
         <div class="flex items-center">
-          <i class="fas fa-database text-xl mr-3"></i>
+          <i class="fas fa-database text-xl mr-2"></i>
           <span class="text-lg">PostgreSQL</span>
         </div>
         <div class="flex items-center">
-          <i class="fab fa-python text-xl mr-3"></i>
+          <i class="fab fa-python text-xl mr-2"></i>
           <span class="text-lg">Python</span>
         </div>
         <div class="flex items-center">
-          <i class="fab fa-linux text-xl mr-3"></i>
+          <i class="fab fa-linux text-xl mr-2"></i>
           <span class="text-lg">Linux</span>
         </div>
         <div class="flex items-center">
-          <i class="fab fa-docker text-xl mr-3"></i>
+          <i class="fab fa-docker text-xl mr-2"></i>
           <span class="text-lg">Docker</span>
         </div>
         <div class="flex items-center">
-          <i class="fab fa-google text-xl mr-3"></i>
+          <i class="fab fa-google text-xl mr-2"></i>
           <span class="text-lg">GCP</span>
         </div>
         <div class="flex items-center">
-          <i class="fa-regular fa-snowflake text-xl mr-3"></i>
+          <i class="fa-regular fa-snowflake text-xl mr-2"></i>
           <span class="text-lg">Nix</span>
         </div>
         <div class="flex items-center">
-          <i class="fas fa-c text-xl mr-3"></i>
+          <i class="fas fa-c text-xl mr-2"></i>
           <span class="text-lg">C++</span>
         </div>
         <div class="flex items-center">
-          <i class="fas fa-database text-xl mr-3"></i>
+          <i class="fas fa-database text-xl mr-2"></i>
           <span class="text-lg">SQL</span>
         </div>
         <div class="flex items-center">
-          <i class="fab fa-java text-xl mr-3"></i>
+          <i class="fab fa-java text-xl mr-2"></i>
           <span class="text-lg">Java</span>
         </div>
         <div class="flex items-center">
-          <i class="fab fa-laravel text-xl mr-3"></i>
+          <i class="fab fa-laravel text-xl mr-2"></i>
           <span class="text-lg">Laravel</span>
         </div>
         <div class="flex items-center">
-          <i class="fas fa-server text-xl mr-3"></i>
+          <i class="fas fa-server text-xl mr-2"></i>
           <span class="text-lg">Nginx</span>
         </div>
         <div class="flex items-center">
-          <i class="fas fa-database text-xl mr-3"></i>
+          <i class="fas fa-database text-xl mr-2"></i>
           <span class="text-lg">MongoDB</span>
         </div>
         <div class="flex items-center">
-          <i class="fab fa-google text-xl mr-3"></i>
+          <i class="fab fa-google text-xl mr-2"></i>
           <span class="text-lg">GCP</span>
         </div>
         <div class="flex items-center">
-          <i class="fab fa-n text-xl mr-3"></i>
+          <i class="fab fa-n text-xl mr-2"></i>
           <span class="text-lg">Notion</span>
         </div>
         <div class="flex items-center">
-          <i class="fab fa-golang text-xl mr-3"></i>
+          <i class="fab fa-golang text-xl mr-2"></i>
           <span class="text-lg">Golang</span>
         </div>
         <div class="flex items-center">
-          <i class="fa-solid fa-code text-xl mr-3"></i>
+          <i class="fa-solid fa-code text-xl mr-2"></i>
           <span class="text-lg">Nvim</span>
         </div>
       </div>
     </section>
 
-    <hr class="my-8 border-gray-300" />
-    <p class="text-lg">Find me on</p>
-    <div class="flex gap-x-4 gap-y-2 flex-wrap mt-4">
-      {
-        siteConfig.socialLinks.map((link) => (
-          <a
-            aria-label={link.text}
-            href={link.href}
-            target="_blank"
-            class="prose-link text-blue-500 hover:text-blue-700 transition-colors duration-200"
-          >
-            <i class:list={[link.icon]} class="text-2xl mr-2" />
-            {link.text}
-          </a>
-        ))
-      }
-    </div>
-    <p class="mt-8 text-lg">
-      Or email me at
-      <a
-        class="text-blue-500 hover:text-blue-700 transition-colors duration-200"
-        aria-label={siteConfig.email}
-        href={`mailto:${siteConfig.email}`}
-      >
-        {siteConfig.email}
-      </a>.
-    </p>
+    <section class="mt-12">
+      <p class="text-lg">Find me on</p>
+      <div class="flex gap-x-4 gap-y-2 flex-wrap mt-4">
+        {
+          siteConfig.socialLinks.map((link) => (
+            <a
+              aria-label={link.text}
+              href={link.href}
+              target="_blank"
+              class="prose-link text-blue-500 hover:text-blue-700 transition-colors duration-200"
+            >
+              <i class:list={[link.icon]} class="text-2xl mr-2" />
+              {link.text}
+            </a>
+          ))
+        }
+      </div>
+      <p class="mt-8 text-lg">
+        Or email me at
+        <a
+          class="text-blue-500 hover:text-blue-700 transition-colors duration-200"
+          aria-label={siteConfig.email}
+          href={`mailto:${siteConfig.email}`}
+        >
+          {siteConfig.email}
+        </a>.
+      </p>
+    </section>
   </article>
 </BaseLayout>
