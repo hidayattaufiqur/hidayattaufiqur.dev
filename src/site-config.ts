@@ -1,5 +1,5 @@
 export const siteConfig = {
-  author: 'Hidayat Taufiqur',
+  author: 'Hidayat Taufiqur Rahmah Achmad',
   title: 'Hi!',
   subtitle: 'Hidayat Taufiqur\'s Personal Website. Built using Visette Theme for Astro.',
   description: 'Hidayat Taufiqur\'s Personal Website. Built using Visette Theme for Astro.',
@@ -31,6 +31,12 @@ export const siteConfig = {
       href: 'https://instagram.com/hidayattaufiqur',
       icon: 'i-simple-icons-instagram',
     },
+    {
+      text: 'Discord',
+      href: 'https://discord.com/users/384880233288957952',
+      icon: 'simple-icons:discord',
+      header: 'ic:baseline-discord',
+    },
   ],
   header: {
     logo: {
@@ -38,6 +44,11 @@ export const siteConfig = {
       alt: 'Logo Image',
     },
     navLinks: [
+      {
+        text: 'About',
+        href: '/about',
+      },
+
       {
         text: 'Blog',
         href: '/blog',
@@ -47,10 +58,6 @@ export const siteConfig = {
         href: '/blog/notes',
       },
       {
-        text: 'Talks',
-        href: '/blog/talks',
-      },
-      {
         text: 'Projects',
         href: '/projects',
       },
@@ -58,6 +65,10 @@ export const siteConfig = {
   },
   page: {
     blogLinks: [
+      {
+        text: 'Index',
+        href: '/',
+      },
       {
         text: 'Blog',
         href: '/blog',

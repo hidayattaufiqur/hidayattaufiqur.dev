@@ -59,5 +59,7 @@ export default defineConfig({
     'i-simple-icons-sinaweibo',
     'i-ri-github-line',
     'i-ri-twitter-x-line',
+    'ic:baseline-discord',
+    'simple-icons:discord',
   ],
 })

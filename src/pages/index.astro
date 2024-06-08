@@ -4,90 +4,123 @@ import siteConfig from '@/site-config'
 ---
 
 <BaseLayout description={siteConfig.description}>
-  <article class="prose">
-    <h1 class="text-title">Hi, Welcome!</h1>
-    <p>My name is Hidayat Taufiqur</p>
-    <p>
-      A minimal, SEO-riendly portfolio and blog theme for Astro. It's inspired
-      by <a target="_blank" href="https://antfu.me">antfu.me</a>.
+  <article class="prose lg:prose-xl">
+    <h1 class="text-title text-5xl font-bold">Hi, Welcome!</h1>
+    <p class="mt-4 text-lg">
+      My name is <br />
+      <b class="text-white-600">{siteConfig.author}</b>
     </p>
-    <p>
-      <img width="640" height="360" src="/hero.jpg" alt="Hero Image" />
+    <p class="mt-6 text-lg">
+      I am a <b>last-year Informatics student and a Backend Engineer</b>. I am
+      also passionate about learning and exploring various fields in software
+      engineering such as <b
+        >system engineering, frontend engineering, DevOps, competitive
+        programming, and more</b
+      >.
     </p>
-    <p>
-      Based on first principles thinking, and you can also see from the picture
-      <sup>👆</sup>, the goal of this theme is to
-      <b>make complex things as simple as possible</b>
-      . So, the core of this theme is the content, and the other elements are just
-      auxiliary.
-    </p>
-    <p>Here are the features you don't need to worry about:</p>
-    <ul>
-      <li>100 / 100 Lighthouse performance</li>
-      <li>Responsive</li>
-      <li>SEO-friendly</li>
-      <li>Light / Dark Theme</li>
-      <li>Markdown support</li>
-      <li>
-        <a target="_blank" href="https://mdxjs.com/">MDX</a>
-        (components in your markdown) support
-      </li>
-      <li>
-        <a target="_blank" href="https://vuejs.org/">Vue</a>
-        SFC component support
-      </li>
-      <li>Auto generated sitemap and RSS Feed</li>
-      <li>
-        <a target="_blank" href="https://vueuse.org/">VueUse</a>
-        &
-        <a target="_blank" href="https://lodash.com/">Lodash</a>
-        support
-      </li>
-    </ul>
-    <p>
-      By the way, this theme use the <a
-        target="_blank"
-        href="https://unocss.dev/">UnoCSS</a
-      > for style, it's fast.
-    </p>
-    <p>
-      Visit it
-      <a
-        target="_blank"
-        href="https://github.com/kevinwong865/astro-theme-vitesse"
-      >
-        on GitHub
-      </a>
-      to fork the repository, read the docs or one-click deploy on Netlify.
-    </p>
-    <p>
-      If you like Vitesse theme for Astro, please
-      <a target="_blank" href="https://github.com/kevinwong865">
-        click follow
-      </a>
-      for me.
-    </p>
-    <hr class="hr-line" />
-    <p>Find me on</p>
-    <p class="flex gap-x-4 gap-y-2 flex-wrap">
+
+    <!-- Technologies Section -->
+    <section class="mt-10">
+      <h3 class="text-xl font-bold mb-3">
+        Technologies that I use (but not limited to):
+      </h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+        <div class="flex items-center">
+          <i class="fab fa-js-square text-xl mr-3"></i>
+          <span class="text-lg">JavaScript</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-node-js text-xl mr-3"></i>
+          <span class="text-lg">Node.js</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fas fa-database text-xl mr-3"></i>
+          <span class="text-lg">PostgreSQL</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-python text-xl mr-3"></i>
+          <span class="text-lg">Python</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-linux text-xl mr-3"></i>
+          <span class="text-lg">Linux</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-docker text-xl mr-3"></i>
+          <span class="text-lg">Docker</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-google text-xl mr-3"></i>
+          <span class="text-lg">GCP</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fa-regular fa-snowflake text-xl mr-3"></i>
+          <span class="text-lg">Nix</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fas fa-c text-xl mr-3"></i>
+          <span class="text-lg">C++</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fas fa-database text-xl mr-3"></i>
+          <span class="text-lg">SQL</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-java text-xl mr-3"></i>
+          <span class="text-lg">Java</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-laravel text-xl mr-3"></i>
+          <span class="text-lg">Laravel</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fas fa-server text-xl mr-3"></i>
+          <span class="text-lg">Nginx</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fas fa-database text-xl mr-3"></i>
+          <span class="text-lg">MongoDB</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-google text-xl mr-3"></i>
+          <span class="text-lg">GCP</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-n text-xl mr-3"></i>
+          <span class="text-lg">Notion</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fab fa-golang text-xl mr-3"></i>
+          <span class="text-lg">Golang</span>
+        </div>
+        <div class="flex items-center">
+          <i class="fa-solid fa-code text-xl mr-3"></i>
+          <span class="text-lg">Nvim</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-8 border-gray-300" />
+    <p class="text-lg">Find me on</p>
+    <div class="flex gap-x-4 gap-y-2 flex-wrap mt-4">
       {
         siteConfig.socialLinks.map((link) => (
           <a
             aria-label={link.text}
             href={link.href}
             target="_blank"
-            class="prose-link"
+            class="prose-link text-blue-500 hover:text-blue-700 transition-colors duration-200"
           >
-            <i class:list={[link.icon]} />
+            <i class:list={[link.icon]} class="text-2xl mr-2" />
             {link.text}
           </a>
         ))
       }
-    </p>
-    <p>
-      If you have any questions, please email me at
+    </div>
+    <p class="mt-8 text-lg">
+      Or email me at
       <a
-        prose-link
+        class="text-blue-500 hover:text-blue-700 transition-colors duration-200"
         aria-label={siteConfig.email}
         href={`mailto:${siteConfig.email}`}
       >

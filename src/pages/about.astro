@@ -1,0 +1,64 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import siteConfig from '@/site-config'
+---
+
+<BaseLayout description={siteConfig.description}>
+  <article class="prose lg:prose-xl">
+    <h1 class="text-title text-5xl font-bold">Hi, Welcome!</h1>
+    <p class="mt-4 text-lg">
+      My name is <br />
+      <b class="text-white-600">{siteConfig.author}</b>
+    </p>
+    <p class="mt-6 text-lg">
+      I am a last-year undergraduate student majoring in Informatics at Telkom
+      University, currently working on my final thesis. My current interest lies
+      in Backend Engineering/Development, but I am also passionate about
+      learning and exploring various fields in software engineering such as
+      system engineering, frontend, DevOps, competitive programming, and more.
+    </p>
+    <p class="mt-6 text-lg">
+      Throughout my academic and professional journey, I have gained experience
+      with a variety of technologies including (but not limited to):
+      <span class="font-semibold"
+        >Linux, C++, SQL, Java, Python, Flask, MongoDB, PostgreSQL, Redis,
+        NodeJS, Golang, Laravel, GCP, Nix, Notion, and Nginx</span
+      >.
+    </p>
+    <p class="mt-6 text-lg">
+      Beyond my technical pursuits, I enjoy movies, music, playing guitar,
+      gaming (mostly Valorant, FIFA, or Mobile Legends, recently Chivalry 2)
+      feel free to hit my DMs if you want to play together 😁, and tinkering
+      around with my day-to-day work environment. Feel free to explore around to
+      learn more about my work, projects, and interests.
+    </p>
+
+    <hr class="my-8 border-gray-300" />
+    <p class="text-lg">Find me on</p>
+    <div class="flex gap-x-4 gap-y-2 flex-wrap mt-4">
+      {
+        siteConfig.socialLinks.map((link) => (
+          <a
+            aria-label={link.text}
+            href={link.href}
+            target="_blank"
+            class="prose-link text-blue-500 hover:text-blue-700 transition-colors duration-200"
+          >
+            <i class:list={[link.icon]} class="text-2xl mr-2" />
+            {link.text}
+          </a>
+        ))
+      }
+    </div>
+    <p class="mt-8 text-lg">
+      If you have any questions, please email me at
+      <a
+        class="text-blue-500 hover:text-blue-700 transition-colors duration-200"
+        aria-label={siteConfig.email}
+        href={`mailto:${siteConfig.email}`}
+      >
+        {siteConfig.email}
+      </a>.
+    </p>
+  </article>
+</BaseLayout>
