@@ -61,5 +61,6 @@ export default defineConfig({
     'i-ri-twitter-x-line',
     'ic:baseline-discord',
     'simple-icons:discord',
+    'i-carbon-blog',
   ],
 })
