@@ -13,7 +13,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set node
         uses: actions/setup-node@v3
@@ -25,3 +25,24 @@ jobs:
 
       - name: Lint
         run: npm run lint
+
+      - name: Set up SSH key ❄️
+        env:
+          GCE_SSH_KEY: ${{ secrets.GCE_SSH_KEY }}
+          GCE_HOST: ${{ secrets.GCE_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${GCE_SSH_KEY}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan ${GCE_HOST} >> ~/.ssh/known_hosts
+
+      - name: Restart Systemd Unit 🚀
+        env:
+          GCE_HOST: ${{ secrets.GCE_HOST }}
+          GCE_USERNAME: ${{ secrets.GCE_USERNAME }}
+        run: |
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${GCE_USERNAME}@${GCE_HOST} "chmod +x /home/${GCE_USERNAME}/Fun/Projects/vitesse/deploy.sh && /home/${GCE_USERNAME}/Fun/Projects/vitesse/deploy.sh"
+
+      - name: Clean up SSH key ✔
+        if: always()
+        run: rm -f ~/.ssh/id_rsa
