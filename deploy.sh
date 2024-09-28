@@ -1,6 +1,6 @@
 #!/run/current-system/sw/bin/zsh
 echo "changing dir..."
-cd Fun/Projects/vitesse
+cd Fun/Projects/hidayattaufiqur.dev
 
 echo "pulling from repo..."
 git stash
