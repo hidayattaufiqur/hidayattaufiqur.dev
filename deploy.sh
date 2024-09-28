@@ -17,9 +17,9 @@ echo "building astro project..."
 nix develop --command bash -c "npm run build"
 
 echo "restarting systemd unit..."
-sudo systemctl restart hidayattaufiqur.dev 
+sudo systemctl restart hidayattaufiqurDev
 
 echo "systemd unit status..."
-sudo systemctl status hidayattaufiqur.dev
+sudo systemctl status hidayattaufiqurDev
 
 echo "done!!!"
