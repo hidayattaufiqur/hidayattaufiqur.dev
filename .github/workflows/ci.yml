@@ -47,7 +47,7 @@ jobs:
           GCE_HOST: ${{ secrets.GCE_HOST }}
           GCE_USERNAME: ${{ secrets.GCE_USERNAME }}
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${GCE_USERNAME}@${GCE_HOST} "chmod +x /home/${GCE_USERNAME}/Fun/Projects/vitesse/deploy.sh && /home/${GCE_USERNAME}/Fun/Projects/vitesse/deploy.sh"
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${GCE_USERNAME}@${GCE_HOST} "chmod +x /home/${GCE_USERNAME}/Fun/Projects/hidayattaufiqur.dev/deploy.sh && /home/${GCE_USERNAME}/Fun/Projects/hidayattaufiqur.dev/deploy.sh"
 
       - name: Clean up SSH key ✔
         if: always()
