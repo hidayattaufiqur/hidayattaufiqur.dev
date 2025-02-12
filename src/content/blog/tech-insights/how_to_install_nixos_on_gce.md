@@ -1,9 +1,9 @@
 ---
-title: How to Install NixOS on GCE
-description: Personal notes on how to install NixOS on GCE because I keep forgetting.
+title: Install NixOS on Google Compute Engine; how to?
+description: Quick guide on how to install NixOS on Google Compute Engine.
 date: 2024-01-07
 duration: 7 min
-tag: NixOS, GCE, How-to
+tag: NixOS, server-configuration, tutorial
 ---
 
 ### ⚠️ Prerequisites:

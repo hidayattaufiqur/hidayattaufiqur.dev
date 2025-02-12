@@ -47,11 +47,13 @@ export default defineConfig({
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   safelist: [
+    'i-ri-spotify-fill',
     'i-ri-file-list-2-line',
     'i-carbon-campsite',
     'i-simple-icons-github',
     'i-simple-icons-x',
     'i-simple-icons-linkedin',
+    'i-simple-icons-spotify',
     'i-simple-icons-instagram',
     'i-simple-icons-youtube',
     'i-simple-icons-bilibili',

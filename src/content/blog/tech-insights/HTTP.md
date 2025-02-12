@@ -1,9 +1,9 @@
 ---
 title: Hyper-text Transfer Protocol.. or Hyper-media Transfer Protocol?
-description: Personal notes on the underlying protocol of the internet.
+description: On today's episode of Back to the Fundamentals; the backbone protocol of the internet.
 date: 2024-01-05
 duration: 10 min
-tag: Protocol
+tag: protocol, networking, http
 ---
 
 General Topic: Protocol | Status: In Progress

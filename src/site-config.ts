@@ -1,11 +1,11 @@
 export const siteConfig = {
   author: 'Hidayat Taufiqur Rahmah Achmad',
   title: 'Hi!',
-  subtitle: 'Hidayat Taufiqur\'s Personal Website. Built using Visette Theme for Astro.',
-  description: 'Hidayat Taufiqur\'s Personal Website. Built using Visette Theme for Astro.',
+  subtitle: 'Backend Engineer | Software Engineer | Tech Enthusiast',
+  description: 'Personal site of Hidayat Taufiqur - Software Engineer specializing in backend development, system architecture, and innovative tech solutions. Explore my projects, insights, and professional journey',
   image: {
     src: '/hero.jpg',
-    alt: 'Website Main Image',
+    alt: 'Hidayat Taufiqur - Software Engineer',
   },
   email: 'hidayattaufiqur@gmail.com',
   handle: '@hidayattaufiqur',
@@ -14,13 +14,11 @@ export const siteConfig = {
       text: 'GitHub',
       href: 'https://github.com/hidayattaufiqur',
       icon: 'i-simple-icons-github',
-      header: 'i-ri-github-line',
     },
     {
       text: 'Twitter',
       href: 'https://twitter.com/hidayattaufiqur',
       icon: 'i-simple-icons-x',
-      header: 'i-ri-twitter-x-line',
     },
     {
       text: 'Linkedin',
@@ -32,6 +30,12 @@ export const siteConfig = {
       href: 'https://instagram.com/hidayattaufiqur',
       icon: 'i-simple-icons-instagram',
     },
+    {
+      text: 'Spotify',
+      href: 'https://open.spotify.com/user/hidayattaufiqur?si=b6b58644e2754dac',
+      icon: 'i-simple-icons-spotify',
+    },
+
   ],
   header: {
     logo: {
@@ -59,6 +63,10 @@ export const siteConfig = {
       {
         text: 'Blog',
         href: '/blog',
+      },
+      {
+        text: 'Tech Insights',
+        href: '/blog/tech',
       },
       {
         text: 'Notes',
