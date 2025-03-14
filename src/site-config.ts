@@ -35,7 +35,6 @@ export const siteConfig = {
       href: 'https://open.spotify.com/user/hidayattaufiqur?si=b6b58644e2754dac',
       icon: 'i-simple-icons-spotify',
     },
-
   ],
   header: {
     logo: {
@@ -55,6 +54,10 @@ export const siteConfig = {
       {
         text: 'Projects',
         href: '/projects',
+      },
+      {
+        text: 'Resume',
+        href: 'https://drive.google.com/file/d/1XiM2WTfmVllMGRBhwis-Bgl9DPlVrKcC/view?usp=sharing',
       },
     ],
   },
