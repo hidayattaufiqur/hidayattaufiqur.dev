@@ -1,3 +1,10 @@
+@font-face {
+  font-family: '0xProton';
+  src: url('/fonts/0xProto.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
 html.dark .astro-code,
 html.dark .astro-code span {
   color: var(--shiki-dark) !important;
@@ -40,4 +47,10 @@ article {
 
 .prose-link i {
   --at-apply: text-sm mr-1;
+}
+
+/* src/styles/global.css */
+:root {
+  --ripple-x: 50%;
+  --ripple-y: 50%;
 }

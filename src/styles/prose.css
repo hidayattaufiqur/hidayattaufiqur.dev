@@ -474,3 +474,24 @@
 .prose-sm > :last-child {
   margin-bottom: 0;
 }
+
+/* src/styles/prose.css */
+.prose h2,
+.prose h3 {
+  position: relative;
+  cursor: pointer;
+}
+
+.prose h2::before,
+.prose h3::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.prose h2:hover::before,
+.prose h3:hover::before {
+  opacity: 1;
+}
