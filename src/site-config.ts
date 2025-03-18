@@ -68,16 +68,12 @@ export const siteConfig = {
         href: '/blog',
       },
       {
+        text: 'General',
+        href: '/blog/general',
+      },
+      {
         text: 'Tech',
         href: '/blog/tech',
-      },
-      {
-        text: 'Notes',
-        href: '/blog/notes',
-      },
-      {
-        text: 'Talks',
-        href: '/blog/talks',
       },
     ],
   },
