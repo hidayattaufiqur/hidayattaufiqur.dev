@@ -68,7 +68,7 @@ export const siteConfig = {
         href: '/blog',
       },
       {
-        text: 'Tech Insights',
+        text: 'Tech',
         href: '/blog/tech',
       },
       {
