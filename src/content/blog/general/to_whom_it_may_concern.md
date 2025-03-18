@@ -1,5 +1,5 @@
 ---
-title: a little poem for the heavy heart
+title: a little poem from a heavy heart
 description: to whom it may concern
 date: 2025-03-18
 duration: 2 min
