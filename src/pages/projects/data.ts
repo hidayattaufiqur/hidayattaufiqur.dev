@@ -2,35 +2,41 @@ import type { ProjectData } from '@/types'
 
 export const projectData: ProjectData = [
   {
-    title: 'Featured Projects',
+    title: 'Current D365FO Work',
     projects: [
       {
-        text: 'NFO',
-        description: 'Currently developing an LLM-aided ontology generation system that leverages Langchain using Python, Flask, and PostgreSQL.',
-        icon: 'i-carbon-cognitive',
-        href: '/projects',
+        text: 'ERP Customization Projects',
+        description: 'Developing custom modules and extensions for Dynamics 365 Finance and Operations using X++ to meet specific business requirements.',
+        icon: 'i-carbon-enterprise',
+        href: '/',
       },
       {
-        text: 'BlogAblog',
-        description: 'Built my first web with a fellow Proclub Teknofest member. This was a blog app where every user has access to post without the hassles of creating an account and having to be logged in. This was built using Node and Express for the Backend as well as HTML+Bootstrap for the Frontend.',
-        icon: 'i-carbon-cognitive',
-        href: 'https://blogablog.hidayattaufiqur.dev/',
+        text: 'Process Automation',
+        description: 'Creating automated workflows within D365FO to streamline business operations and improve efficiency.',
+        icon: 'i-carbon-automation',
+        href: '/',
       },
     ],
   },
   {
-    title: 'Professional Experience',
+    title: 'Backend & API Development',
     projects: [
       {
         text: 'Telkom Indonesia / Digistar Internship',
-        description: 'Developed backend server APIs for internal projects using Typescript that interacted with MySQL, SingleStore, BigQuery, and other Google Cloud services.',
-        icon: 'i-carbon-enterprise',
-        href: '/projects',
+        description: 'Developed backend server APIs using Typescript that interacted with MySQL, SingleStore, BigQuery, and other Google Cloud services.',
+        icon: 'i-carbon-api',
+        href: '/',
       },
       {
-        text: 'DBT Telkom Indonesia / Sustainable Talent Nurturing Program',
-        description: 'Worked on an API built using Go and deployed the backend on a virtual server as part of a real-world project from Telkom.',
-        icon: 'i-carbon-cloud-service-management',
+        text: 'DBT Telkom Indonesia',
+        description: 'Worked on an API built using Go and deployed the backend on a virtual server as part of a real-world project.',
+        icon: 'i-carbon-cloud',
+        href: '/',
+      },
+      {
+        text: 'NFO - LLM Ontology Generator',
+        description: 'Currently developing an LLM-aided ontology generation system using Python, Flask, and PostgreSQL.',
+        icon: 'i-carbon-cognitive',
         href: '/projects',
       },
     ],
@@ -39,16 +45,22 @@ export const projectData: ProjectData = [
     title: 'Web Development',
     projects: [
       {
-        text: 'PaudAliyani',
-        description: 'Built a website as the step to digitize and introduce PaudAliyani in Pangkep, Sulawesi Selatan, to more people. This project was built using Node and Express.',
-        icon: 'i-carbon-web-builder',
+        text: 'PaudAliyani Website',
+        description: 'Built a website using Node and Express to digitize and introduce PaudAliyani in Pangkep, Sulawesi Selatan.',
+        icon: 'i-carbon-web',
         href: 'https://paudaliyani.sch.id/',
       },
       {
-        text: 'Teknofest',
-        description: 'Led a team to build a web for Proclub’s registration. This project was built using Node and Express for the Backend and React for the Frontend.',
-        icon: 'i-carbon-application-web',
+        text: 'Teknofest Registration Portal',
+        description: 'Led a team to build a web portal for Proclub\'s registration using Node/Express backend and React frontend.',
+        icon: 'i-carbon-application',
         href: 'https://teknofest.proclub.tech',
+      },
+      {
+        text: 'BlogAblog',
+        description: 'Built a blog app where users can post without creating accounts, using Node/Express backend and HTML+Bootstrap frontend.',
+        icon: 'i-carbon-blog',
+        href: 'https://blogablog.hidayattaufiqur.dev/',
       },
     ],
   },
@@ -56,14 +68,14 @@ export const projectData: ProjectData = [
     title: 'Mobile Development',
     projects: [
       {
-        text: 'Specifit',
-        description: 'Built a fitness app that tracks and recommends personal programs for each user based on their respective conditions. This project was rebuilt using Flutter for the Mobile App, React for the web admin panel, and Laravel for the Backend.',
+        text: 'Specifit Fitness App',
+        description: 'Built a fitness app using Flutter for mobile, React for web admin, and Laravel for backend.',
         icon: 'i-carbon-mobile',
         href: '/',
       },
       {
-        text: 'Fix-it',
-        description: 'Built a mobile application that serves as a bridge connecting customers and service providers in home-related services. This project was built on Node and Express for the Backend, and React Native for the Frontend.',
+        text: 'Fix-it Service Platform',
+        description: 'Mobile application connecting customers and service providers, built with Node/Express backend and React Native frontend.',
         icon: 'i-carbon-mobile',
         href: '/',
       },

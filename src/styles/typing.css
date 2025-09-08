@@ -1,0 +1,31 @@
+/* src/styles/typing.css */
+.typing-animation {
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: bold;
+  font-family: '0xProton', monospace;
+  border-right: 0.15em solid orange;
+  width: 0;
+  animation:
+    typing 3.5s steps(46, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: max-content;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}

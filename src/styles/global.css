@@ -22,6 +22,10 @@ html:not(.dark) {
   color-scheme: light;
 }
 
+body {
+  font-family: '0xProton', monospace;
+}
+
 #nprogress {
   pointer-events: none;
 }

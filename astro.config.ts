@@ -32,4 +32,11 @@ export default defineConfig({
       wrap: true,
     },
   },
+  vite: {
+    server: {
+      watch: {
+        ignored: ['**/.direnv/**', '**/node_modules/**', '**/dist/**'],
+      },
+    },
+  },
 })

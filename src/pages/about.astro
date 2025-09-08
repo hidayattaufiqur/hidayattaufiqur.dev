@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import siteConfig from '@/site-config'
+import '@/styles/typing.css'
 ---
 
 <BaseLayout description={siteConfig.description}>
@@ -9,24 +10,39 @@ import siteConfig from '@/site-config'
       Greetings! My name is
       <b class="text-white-600">Hidayat Taufiqur</b>
     </p>
-    <p class="mt-6 text-lg">
-      I have just graduated with from Telkom University with a computer science
-      degree. I have interests and passions to learn and explore various other
-      fields within Software Engineering realm such as <b
-        >System Engineering, Frontend Engineering, DevOps, Competitive
-        Programming, and more!</b
-      >
+
+    <p class="mt-6 text-md typing-animation">
+      🚀 Junior D365FO Developer | Software Engineer
     </p>
+
     <p class="mt-6 text-lg">
-      Throughout my academic and professional journey, I have gained experiences
-      in a variety of technologies such as
+      I'm a Software Engineer who recently graduated from Telkom University with
+      a Computer Science degree. I'm currently working as a Junior Developer
+      specializing in Dynamics 365 Finance and Operations (D365FO), but my true
+      passion lies in backend engineering and system architecture.
+    </p>
+
+    <p class="mt-6 text-lg">
+      My interests span across various domains within Software Engineering, a
+      particular focus on <b
+        >Backend Development, System Engineering, DevOps, and Distributed
+        Systems</b
+      >. I'm constantly exploring new technologies and methodologies to expand
+      my skillset in these areas.
+    </p>
+
+    <p class="mt-6 text-lg">
+      Throughout my academic and professional journey, I have gained hands-on
+      experience with a variety of technologies such as
       <span class="font-semibold">
         <b
           >Linux, C, C++, SQL, Java, Python, Flask, MongoDB, PostgreSQL, Redis,
-          NodeJS, Golang, Laravel, GCP, Nix, Notion, and Nginx</b
+          NodeJS, Golang, Laravel, GCP, Nix, Notion, Nginx, X++, D365 Finance
+          and Operations, and n8n</b
         >
       </span>.
     </p>
+
     <p class="mt-6 text-lg">
       Beyond my technical pursuits, I enjoy <b>
         watching movies, jamming to music, playing guitar, playing games (mostly
@@ -36,7 +52,7 @@ import siteConfig from '@/site-config'
       interests.
     </p>
 
-    <p class="text-lg">
+    <p class="text-lg mt-8">
       Interested in learning more about my professional background? Please check
       my <b>
         <a
@@ -46,13 +62,16 @@ import siteConfig from '@/site-config'
         >
       </b>
     </p>
-    <p class="text-md">
-      p.s. feel free to reach me out if you want to collaborate, play together,
-      or simply want to be mutuals! 😁🤝
-    </p>
+
+    <div class="mt-8 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
+      <p class="text-sm">
+        💼 While I'm currently focused on ERP development, I'm actively seeking
+        opportunities in backend engineering and system architecture roles.
+      </p>
+    </div>
 
     <section class="mt-12">
-      <p class="text-lg">Let's connect on:</p>
+      <p class="text-lg">Let's connect:</p>
       <div class="flex gap-x-4 gap-y-2 flex-wrap mt-4">
         {
           siteConfig.socialLinks.map((link) => (
@@ -60,9 +79,9 @@ import siteConfig from '@/site-config'
               aria-label={link.text}
               href={link.href}
               target="_blank"
-              class="prose-link text-blue-500 hover:text-blue-700 transition-colors duration-200"
+              class="prose-link text-blue-500 hover:text-blue-700 transition-colors duration-200 flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
             >
-              <i class:list={[link.icon]} class="text-2xl mr-2" />
+              <i class:list={[link.icon]} class="text-xl mr-2" />
               {link.text}
             </a>
           ))
