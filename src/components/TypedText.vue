@@ -1,27 +1,7 @@
-<template>
-  <span
-    class="tt-wrapper inline-block whitespace-normal break-words max-w-full overflow-hidden font-bold font-mono"
-    role="status"
-    :aria-label="ariaLabel"
-    aria-live="polite"
-  >
-    <span>{{ displayText }}<span
-      class="ml-1 w-px h-[1em] inline-block align-[-0.125em] bg-orange-500/90 animate-caret"
-      aria-hidden="true"
-    ></span></span>
-  </span>
-  <noscript>
-    <span class="inline-block font-bold">{{ messages[0] || '' }}</span>
-  </noscript>
-  <!-- Hidden live region for better SR announcements -->
-  <span class="sr-only" aria-live="polite">{{ liveRegionText }}</span>
-  <!-- Note: parent can style via wrapper classes -->
-</template>
-
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, watch, computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
-type Props = {
+interface Props {
   messages: string[]
   typeSpeed?: number // ms per character when typing
   deleteSpeed?: number // ms per character when deleting
@@ -54,7 +34,8 @@ const prefersReduced = ref(false)
 const currentMessage = computed(() => props.messages[index.value] ?? '')
 
 function schedule(nextDelay: number) {
-  if (timer) window.clearTimeout(timer)
+  if (timer)
+    window.clearTimeout(timer)
   timer = window.setTimeout(tick, nextDelay)
 }
 
@@ -63,13 +44,16 @@ function tick() {
     // Reduced motion: no typing effect, just rotate full messages slowly
     displayText.value = currentMessage.value
     liveRegionText.value = currentMessage.value
-    if (timer) window.clearTimeout(timer)
+    if (timer)
+      window.clearTimeout(timer)
     timer = window.setTimeout(() => {
       const next = index.value + 1
       if (next >= props.messages.length) {
-        if (!props.loop) return
+        if (!props.loop)
+          return
         index.value = 0
-      } else {
+      }
+      else {
         index.value = next
       }
       displayText.value = currentMessage.value
@@ -79,19 +63,18 @@ function tick() {
     return
   }
   const msg = currentMessage.value
-  if (!msg) return
+  if (!msg)
+    return
 
-  if (isDeleting.value) {
+  if (isDeleting.value)
     charIndex.value = Math.max(0, charIndex.value - 1)
-  } else {
+  else
     charIndex.value = Math.min(msg.length, charIndex.value + 1)
-  }
 
   displayText.value = msg.slice(0, charIndex.value)
   // Keep SR updates less noisy by only announcing full message
-  if (!isDeleting.value && charIndex.value === msg.length) {
+  if (!isDeleting.value && charIndex.value === msg.length)
     liveRegionText.value = msg
-  }
 
   if (!isDeleting.value && charIndex.value === msg.length) {
     isDeleting.value = true
@@ -104,9 +87,11 @@ function tick() {
     // Move to next message
     const next = index.value + 1
     if (next >= props.messages.length) {
-      if (!props.loop) return
+      if (!props.loop)
+        return
       index.value = 0
-    } else {
+    }
+    else {
       index.value = next
     }
     // small pause between rotations before typing next
@@ -122,7 +107,8 @@ onMounted(() => {
     mql = window.matchMedia('(prefers-reduced-motion: reduce)')
     const handler = () => {
       prefersReduced.value = !!mql?.matches
-      if (timer) window.clearTimeout(timer)
+      if (timer)
+        window.clearTimeout(timer)
       // reset state
       displayText.value = ''
       charIndex.value = 0
@@ -132,7 +118,8 @@ onMounted(() => {
         displayText.value = currentMessage.value
         liveRegionText.value = currentMessage.value
         tick()
-      } else {
+      }
+      else {
         schedule(props.typeSpeed)
       }
     }
@@ -151,7 +138,8 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  if (timer) window.clearTimeout(timer)
+  if (timer)
+    window.clearTimeout(timer)
   if (mql) {
     const noop = () => {}
     // best-effort remove
@@ -164,7 +152,8 @@ onBeforeUnmount(() => {
 
 // Restart animation if messages change
 watch(() => props.messages, () => {
-  if (timer) window.clearTimeout(timer)
+  if (timer)
+    window.clearTimeout(timer)
   index.value = 0
   charIndex.value = 0
   isDeleting.value = false
@@ -173,15 +162,42 @@ watch(() => props.messages, () => {
 })
 </script>
 
+<template>
+  <span
+    class="tt-wrapper inline-block whitespace-normal break-words max-w-full overflow-hidden font-bold font-mono"
+    role="status"
+    :aria-label="ariaLabel"
+    aria-live="polite"
+  >
+    <span>{{ displayText }}<span
+      class="ml-1 w-px h-[1em] inline-block align-[-0.125em] bg-orange-500/90 animate-caret"
+      aria-hidden="true"
+    /></span>
+  </span>
+  <noscript>
+    <span class="inline-block font-bold">{{ messages[0] || '' }}</span>
+  </noscript>
+  <!-- Hidden live region for better SR announcements -->
+  <span class="sr-only" aria-live="polite">{{ liveRegionText }}</span>
+  <!-- Note: parent can style via wrapper classes -->
+</template>
+
 <style scoped>
 /* Ensure font, wrapping and prevent overflow on small screens */
 .tt-wrapper {
-  font-family: '0xProto Nerd Font', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-family: '0xProto Nerd Font', ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
   overflow-wrap: anywhere;
 }
 @keyframes caret-blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
 }
 .animate-caret {
   animation: caret-blink 1s step-end infinite;

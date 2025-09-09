@@ -40,7 +40,7 @@ export default defineConfig({
       },
       collections: {
         'simple-icons': simpleIcons as any,
-        logos: logos as any,
+        'logos': logos as any,
       },
     }),
     presetTypography(),

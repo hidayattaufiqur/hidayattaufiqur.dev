@@ -59,7 +59,6 @@ export const projectData: ProjectData = [
       {
         text: 'BlogAblog',
         description: 'Built a blog app where users can post without creating accounts, using Node/Express backend and HTML+Bootstrap frontend.',
-        icon: 'i-carbon-blog',
         href: 'https://blogablog.hidayattaufiqur.dev/',
       },
     ],

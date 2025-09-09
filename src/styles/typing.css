@@ -1,13 +1,16 @@
 /* src/styles/typing.css */
 .typing-animation {
+  display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   font-weight: bold;
-  font-family: '0xProton', monospace;
+  font-family: '0xProto Nerd Font', monospace;
   border-right: 0.15em solid orange;
   width: 0;
+  --typing-chars: 46;
   animation:
     typing 3.5s steps(46, end) forwards,
+    typing 3.5s steps(var(--typing-chars), end) forwards,
     blink-caret 0.75s step-end infinite;
 }
 
@@ -17,6 +20,7 @@
   }
   to {
     width: max-content;
+    width: calc(var(--typing-chars) * 1ch);
   }
 }
 

@@ -16,13 +16,20 @@ defineProps<{
         nothing here yet.
       </div>
     </template>
-    <li v-for="project in list" :key="project.text" container-link w-full flex items-center rd-2>
-      <a flex items-center target="_blank" :href="project.href" :aria-label="project.text">
-        <div ml-2 mr-4 pt-2>
-          <i text-4xl inline-block :class="project.icon || 'i-carbon-unknown'" />
+    <li v-for="project in list" :key="project.text" w-full rd-2>
+      <a
+        text-lg lh-tight nav-link
+        flex="~ col md:row gap-2 md:items-center"
+        target="_blank"
+        :href="project.href"
+        :aria-label="project.text"
+      >
+        <div v-if="project.icon" ml-2 mr-4 pt-2 self-start w-10>
+          <i text-4xl inline-block :class="project.icon" />
         </div>
+        <div v-else ml-2 mr-4 pt-2 self-start w-10 aria-hidden="true" />
         <div font-normal lh-tight>
-          <div text-lg hover:text-main>{{ project.text }}</div>
+          <div><span lh-normal>{{ project.text }}</span></div>
           <div opacity-50 text-sm>{{ project.description }}</div>
         </div>
       </a>
