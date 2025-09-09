@@ -7,6 +7,9 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
+// Ensure icon collections are bundled (prevents missing icons)
+import simpleIcons from '@iconify-json/simple-icons/icons.json'
+import logos from '@iconify-json/logos/icons.json'
 
 export default defineConfig({
   shortcuts: [
@@ -35,11 +38,15 @@ export default defineConfig({
       extraProperties: {
         display: 'inline-block',
       },
+      collections: {
+        'simple-icons': simpleIcons as any,
+        logos: logos as any,
+      },
     }),
     presetTypography(),
   ],
   fontFamily: {
-    mono: '0xProto, DM Mono:400,600',
+    mono: '0xProto Nerd Font, DM Mono:400,600',
     sans: 'Inter:400,600,800',
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
@@ -53,6 +60,7 @@ export default defineConfig({
     'i-simple-icons-spotify',
     'i-simple-icons-instagram',
     'i-simple-icons-youtube',
+    'i-simple-icons-tiktok',
     'i-simple-icons-bilibili',
     'i-simple-icons-zhihu',
     'i-simple-icons-sinaweibo',
@@ -61,5 +69,10 @@ export default defineConfig({
     'ic:baseline-discord',
     'simple-icons:discord',
     'i-carbon-blog',
+    'i-simple-icons-java',
+    'i-simple-icons-openjdk',
+    'i-simple-icons-n8n',
+    'i-logos-java',
+    'i-logos-n8n',
   ],
 })
