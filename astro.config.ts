@@ -3,13 +3,9 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import UnoCSS from 'unocss/astro'
 import vue from '@astrojs/vue'
-import node from '@astrojs/node'
 
 export default defineConfig({
-  output: 'server',
-  adapter: node({
-    mode: 'standalone',
-  }),
+  output: 'static',
 
   site: 'https://astro-theme-vitesse.netlify.app/',
   server: {
