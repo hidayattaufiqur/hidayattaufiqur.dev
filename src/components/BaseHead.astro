@@ -46,10 +46,9 @@ function formatCanonicalURL(url: string | URL) {
 <link rel="icon" type="image/svg+xml" href="/h.png" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-/>
+<!-- Removed external Font Awesome CSS to avoid extra network/webfont cost -->
+
+<!-- Consider preloading a real WOFF2 if available; TTF (2.3MB) preload removed -->
 
 <!-- Page Metadata -->
 <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
