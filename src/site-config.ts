@@ -1,7 +1,7 @@
 export const siteConfig = {
   author: 'Hidayat Taufiqur Rahmah Achmad',
   title: 'Hi!',
-  subtitle: 'Junior D365FO Developer | Software Engineer | Tech Enthusiast',
+  subtitle: 'Jr. D365FO Dev | Software Engineer | Loves tinkering',
   description: 'Personal site of Hidayat Taufiqur - Software Engineer specializing in Dynamics 365 Finance and Operations, backend development, and enterprise solutions. Explore my projects, insights, and professional journey',
   image: {
     src: '/hero.jpg',
@@ -34,6 +34,11 @@ export const siteConfig = {
       text: 'Spotify',
       href: 'https://open.spotify.com/user/hidayattaufiqur?si=b6b58644e2754dac',
       icon: 'i-simple-icons-spotify',
+    },
+    {
+      text: 'TikTok',
+      href: 'https://www.tiktok.com/@d9s.jpg',
+      icon: 'i-simple-icons-tiktok',
     },
   ],
   header: {

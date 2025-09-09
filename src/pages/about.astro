@@ -1,7 +1,14 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import siteConfig from '@/site-config'
-import '@/styles/typing.css'
+import TypedText from '@/components/TypedText.vue'
+
+const funFacts = [
+  '🚀 Jr. D365FO Dev | Software Engineer',
+  'I use Nvim + NixOS, btw 😎',
+  "Blue is the colour — Chelsea FC 💙",
+  'Add me on Mobile Legends: 53209999 🎮',
+]
 ---
 
 <BaseLayout description={siteConfig.description}>
@@ -11,45 +18,49 @@ import '@/styles/typing.css'
       <b class="text-white-600">Hidayat Taufiqur</b>
     </p>
 
-    <p class="mt-6 text-md typing-animation">
-      🚀 Junior D365FO Developer | Software Engineer
+    <p class="mt-6 text-md">
+      <TypedText
+        client:load
+        messages={funFacts}
+        type-speed={55}
+        delete-speed={28}
+        pause-time={1500}
+        between-pause={2000}
+        aria-label="Fun facts about me"
+      />
     </p>
 
     <p class="mt-6 text-lg">
-      I'm a Software Engineer who recently graduated from Telkom University with
-      a Computer Science degree. I'm currently working as a Junior Developer
-      specializing in Dynamics 365 Finance and Operations (D365FO), but my true
-      passion lies in backend engineering and system architecture.
+      I'm a <b>Software Engineer</b> with <b>2+ years</b> of experience, currently
+      focused on <b>Dynamics 365 Finance &amp; Operations (D365FO)</b>. I
+      specialize in <b>backend engineering</b> and system design.
     </p>
 
-    <p class="mt-6 text-lg">
-      My interests span across various domains within Software Engineering, a
-      particular focus on <b
-        >Backend Development, System Engineering, DevOps, and Distributed
-        Systems</b
-      >. I'm constantly exploring new technologies and methodologies to expand
-      my skillset in these areas.
+    <p class="mt-4 text-lg">
+      I build APIs, integrate services, and automate workflows (including
+      <b>n8n</b>) to make systems reliable and maintainable.
     </p>
 
-    <p class="mt-6 text-lg">
-      Throughout my academic and professional journey, I have gained hands-on
-      experience with a variety of technologies such as
-      <span class="font-semibold">
-        <b
-          >Linux, C, C++, SQL, Java, Python, Flask, MongoDB, PostgreSQL, Redis,
-          NodeJS, Golang, Laravel, GCP, Nix, Notion, Nginx, X++, D365 Finance
-          and Operations, and n8n</b
-        >
-      </span>.
+    <p class="mt-4 text-lg">
+      Areas I care about: <b>backend architecture</b>, <b>distributed systems</b>,
+      and <b>DevOps practices</b> that keep services fast and observable.
     </p>
 
+    <div class="mt-6">
+      <h3 class="text-lg font-bold mb-2">Toolbox</h3>
+      <ul class="mt-2">
+        <li><b>Languages:</b> Java/OpenJDK, JavaScript/TypeScript, Go, Python, C/C++, X++, PHP, Nix</li>
+        <li><b>Databases:</b> PostgreSQL, MySQL, MongoDB, Redis, Firebase, Microsoft SQL Server</li>
+        <li><b>Platforms:</b> Linux, GCP, Nix/NixOS</li>
+        <li><b>Frameworks:</b> Node.js, Laravel, Flask, D365FO/X++</li>
+        <li><b>Web/Infra:</b> Nginx, Docker, REST APIs, integrations</li>
+        <li><b>Automation:</b> n8n, basic CI/CD</li>
+      </ul>
+    </div>
+
     <p class="mt-6 text-lg">
-      Beyond my technical pursuits, I enjoy <b>
-        watching movies, jamming to music, playing guitar, playing games (mostly
-        Valorant, FIFA, or Mobile Legends), and tinkering around with my
-        day-to-day work environment</b
-      >. Feel free to explore around to learn more about my work, projects, and
-      interests.
+      Outside work, I enjoy movies, music, guitar, and the occasional game
+      session. I also like tinkering with my dev environment.
     </p>
 
     <p class="text-lg mt-8">
