@@ -61,6 +61,10 @@ export const siteConfig = {
         href: '/projects',
       },
       {
+        text: 'Photography',
+        href: '/photography',
+      },
+      {
         text: 'Resume',
         href: 'https://drive.google.com/file/d/1XiM2WTfmVllMGRBhwis-Bgl9DPlVrKcC/view?usp=sharing',
       },

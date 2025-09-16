@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import PhotoGallery from '@/components/photography/photo-gallery.vue'
+
+const { album } = Astro.params as { album: string }
+const title = 'Photography'
+const description = 'Browse photos by album from Google Drive folders.'
+
+// Static build: pre-render a minimal deep-link. Albums are fetched client-side.
+export function getStaticPaths() {
+  return [{ params: { album: 'all' } }]
+}
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://www.googleapis.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://lh3.googleusercontent.com"
+      crossorigin
+    />
+    <link rel="preconnect" href="https://drive.google.com" crossorigin />
+    <link rel="preconnect" href="https://picsum.photos" crossorigin />
+    <link rel="dns-prefetch" href="//www.googleapis.com" />
+    <link rel="dns-prefetch" href="//lh3.googleusercontent.com" />
+    <link rel="dns-prefetch" href="//drive.google.com" />
+    <link rel="dns-prefetch" href="//picsum.photos" />
+  </Fragment>
+  <PhotoGallery client:visible initialAlbumSlug={album} />
+  <hr class="hr-line" />
+  <p class="text-center opacity-70 text-sm">
+    Use the album filter to switch categories. This page deep-links to “{
+      album
+    }”.
+  </p>
+</BaseLayout>
