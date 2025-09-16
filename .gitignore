@@ -6,3 +6,9 @@ node_modules
 *.log
 .direnv
 .watchignore
+.env
+.env.*
+.env.local
+*.env
+FEATURES.md
+AGENTS.md
