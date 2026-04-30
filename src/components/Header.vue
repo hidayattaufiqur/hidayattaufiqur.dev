@@ -85,7 +85,8 @@ function toggleNavDrawer() {
       </a>
       <nav class="sm:flex hidden flex-wrap gap-x-6 position-initial flex-row">
         <a
-          v-for="link in navLinks" :key="link.text" :aria-label="`${link.text}`" :target="getLinkTarget(link.href)"
+          v-for="link in navLinks" :key="link.text" :aria-label="`${link.text}`" :target="link.href === '/resume.html' ? '_blank' : getLinkTarget(link.href)"
+          :rel="(link.href === '/resume.html' || getLinkTarget(link.href) === '_blank') ? 'noopener noreferrer' : null"
           nav-link :href="link.href"
         >
           {{ link.text }}
@@ -98,7 +99,7 @@ function toggleNavDrawer() {
     <div class="flex gap-x-6">
       <a
         v-for="link in socialLinks" :key="link.text" :aria-label="`${link.text}`" :class="link.icon" nav-link
-        :target="getLinkTarget(link.href)" :href="link.href"
+        :target="getLinkTarget(link.href)" :rel="getLinkTarget(link.href) === '_blank' ? 'noopener noreferrer' : null" :href="link.href"
       />
 
       <ThemeToggle />
@@ -109,7 +110,8 @@ function toggleNavDrawer() {
   >
     <i i-ri-menu-2-fill />
     <a
-      v-for="link in navLinks" :key="link.text" :aria-label="`${link.text}`" :target="getLinkTarget(link.href)"
+      v-for="link in navLinks" :key="link.text" :aria-label="`${link.text}`" :target="link.href === '/resume.html' ? '_blank' : getLinkTarget(link.href)"
+      :rel="(link.href === '/resume.html' || getLinkTarget(link.href) === '_blank') ? 'noopener noreferrer' : null"
       nav-link :href="link.href" @click="toggleNavDrawer()"
     >
       {{ link.text }}
@@ -130,8 +132,8 @@ function toggleNavDrawer() {
 
 .nav-drawer {
   transform: translateX(-100%);
-  --at-apply: box-border fixed h-screen z-999 left-0 top-0 min-w-32vw max-w-50vw
-    bg-main p-6 text-lg flex flex-col gap-5 transition-all;
+  --at-apply: box-border fixed h-screen z-999 left-0 top-0 min-w-32vw max-w-50vw bg-main p-6 text-lg flex flex-col gap-5
+    transition-all;
 }
 
 .nav-drawer-mask {

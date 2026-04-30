@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 interface Post {
   id: string
-  slug: string
   body: string
   data: Record<string, any>
   collection: string
@@ -21,7 +20,7 @@ function getDate(date: string) {
 function getHref(post: Post) {
   if (post.data.redirect)
     return post.data.redirect
-  return `/posts/${post.slug}`
+  return `/posts/${post.id.replace(/\.(md|mdx)$/, '')}`
 }
 
 function getTarget(post: Post) {
@@ -48,7 +47,7 @@ function getYear(date: Date | string | number) {
     </template>
     <li v-for="(post, index) in list " :key="post.data.title" mb-8>
       <div v-if="!isSameYear(post.data.date, list[index - 1]?.data.date)" select-none relative h18 pointer-events-none>
-        <span text-7em color-transparent font-bold text-stroke-2 text-stroke-hex-aaa op14 absolute top--0.2em>
+        <span class="text-7em color-transparent font-bold text-stroke-2 text-stroke-[#aaa] op14 absolute top--0.2em">
           {{ getYear(post.data.date) }}
         </span>
       </div>

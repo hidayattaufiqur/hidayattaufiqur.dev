@@ -4,11 +4,22 @@ node_modules
 .DS_Store
 .eslintcache
 *.log
+
+# Nix dev shell
 .direnv
-.watchignore
+.direnv/
+.envrc
+
+# Environment / secrets
 .env
 .env.*
 .env.local
 *.env
+
+# AI / editor tool config (may contain API keys)
+opencode.json
+.claude/
+
+# Internal docs not relevant to repo consumers
 FEATURES.md
 AGENTS.md

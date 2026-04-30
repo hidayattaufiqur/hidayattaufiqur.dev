@@ -1,0 +1,43 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getCollection, render } from 'astro:content'
+
+export const prerender = true
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects')
+  return projects.map((project) => {
+    return {
+      params: { slug: project.id.replace(/\.(md|mdx)$/, '') },
+      props: {
+        project,
+      },
+    }
+  })
+}
+
+const { project } = Astro.props
+const { title, description, links } = project.data
+
+const { Content } = await render(project)
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="prose lg:prose-xl">
+    <h1>{title}</h1>
+    {
+      links && links.length > 0 && (
+        <ul>
+          {links.map((link) => (
+            <li>
+              <a href={link.href} target="_blank" rel="noopener noreferrer">
+                {link.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    <Content />
+  </article>
+</BaseLayout>

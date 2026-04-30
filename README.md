@@ -100,6 +100,16 @@ Like this:
 }
 ```
 
+## How to review my work
+
+- Read the featured case studies under Projects → Case Studies (links below).
+
+Quick links:
+
+- Photography case study: /projects/case-studies/photography
+- NFO Ontology: /projects/case-studies/nfo-ontology
+- Telkom internship: /projects/case-studies/telkom-internship
+
 ## License
 
 [MIT License](./LICENSE) © 2024-PRESENT [Kevin Wong](https://github.com/kevinwong865)

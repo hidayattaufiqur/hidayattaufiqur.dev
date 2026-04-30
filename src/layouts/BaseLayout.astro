@@ -1,10 +1,11 @@
 ---
 import { fade } from 'astro:transitions'
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 import BaseHead from '@/components/BaseHead.astro'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import ScrollToTop from '@/components/ScrollToTop.vue'
+import CommandPalette from '@/components/CommandPalette.vue'
 
 interface Props {
   containerClass?: string
@@ -18,13 +19,13 @@ const { containerClass, ...head } = Astro.props as Props & Record<string, any>
   <head>
     <BaseHead {...head} />
     <slot name="head" />
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body class="bg-main text-main min-h-screen font-mono w-full bg-dot">
     <Header client:load />
+    <CommandPalette client:load />
     <main
-      class={containerClass ??
-        'grow max-w-3xl mx-auto sm:pt-36 pt-26 pb-16 px-6 relative'}
+      class={containerClass ?? 'grow max-w-3xl mx-auto sm:pt-36 pt-26 pb-16 px-6 relative'}
       transition:animate={fade({ duration: '0.4s' })}
     >
       <slot />

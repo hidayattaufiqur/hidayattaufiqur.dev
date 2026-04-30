@@ -2,19 +2,7 @@
 
 ## Pending
 
-- Handle unsupported Google Drive images in gallery lightbox
-  - Add an image proxy/resizer to serve non-renderable formats (e.g., HEIC/RAW) as web-friendly JPEG/WEBP.
-  - Options:
-    - Cloud Function / Vercel/Netlify Function: fetch Drive `webContentLink` or `uc?export=download&id=...`, convert, cache, and return image bytes with proper CORS.
-    - Use a media CDN (e.g., Cloudinary/Imgix) with Drive import and on-the-fly format conversion.
-  - Update provider to detect unsupported MIME types and route through the proxy instead of linking out to Drive.
-  - Keep thumbnails and lightbox URLs consistent (`thumb` ~600w, `src` ~1600w) with cache headers.
-
-- Tweak clear-display UI (optional)
-  - Make arrow opacity configurable; consider 30–60% range.
-  - Optionally add a subtle hint on first entry into clear-display.
-
-- Remove debug overlay once Drive originals are stable (keep console logs behind `?debug=1`).
+- None — all pending photography/Drive tasks completed. (Updated 2026-04-21)
 
 ## Completed
 
@@ -24,3 +12,13 @@
 
 - Remove mobile infinite scrolling
   - Replaced with explicit “Load more” button on mobile and persisted scroll/page state on back navigation.
+
+- Handle unsupported Google Drive images in gallery lightbox
+  - Added an image proxy/resizer to serve non-renderable formats (e.g., HEIC/RAW) as web-friendly JPEG/WEBP.
+  - Implemented a serverless image proxy that fetches Drive `webContentLink` / `uc?export=download&id=...`, converts, caches, and returns image bytes with proper CORS. Thumbnails (~600w) and lightbox sources (~1600w) are served consistently with cache headers.
+
+- Tweak clear-display UI
+  - Arrow opacity made configurable (default range 30–60%) and a subtle first-entry hint was added.
+
+- Remove debug overlay
+  - Debug overlay removed; debug logs remain available behind `?debug=1`.

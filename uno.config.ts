@@ -14,8 +14,8 @@ import logos from '@iconify-json/logos/icons.json'
 export default defineConfig({
   shortcuts: [
     {
-      'bg-main': 'bg-hex-eef5fc dark:bg-hex-0d1117',
-      'text-main': 'text-hex-555555 dark:text-hex-bbbbbb',
+      'bg-main': 'bg-[#eef5fc] dark:bg-[#0d1117]',
+      'text-main': 'text-[#555555] dark:text-[#bbbbbb]',
       'text-link': 'text-dark dark:text-white ',
       'border-main': 'border-truegray-300 dark:border-truegray-600',
     },
@@ -74,5 +74,12 @@ export default defineConfig({
     'i-simple-icons-n8n',
     'i-logos-java',
     'i-logos-n8n',
+    // common tech icons (ensure included in builds)
+    'i-simple-icons-typescript',
+    'i-simple-icons-javascript',
+    'i-simple-icons-postgresql',
+    'i-simple-icons-nixos',
+    'i-simple-icons-googlecloud',
+    'i-simple-icons-docker',
   ],
 })

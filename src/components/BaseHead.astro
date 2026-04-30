@@ -11,11 +11,7 @@ interface Props {
   pageType?: 'website' | 'article'
 }
 
-const {
-  description = '',
-  image = siteConfig.image,
-  pageType = 'website',
-} = Astro.props
+const { description = '', image = siteConfig.image, pageType = 'website' } = Astro.props
 
 const title = [Astro.props.title, siteConfig.title].filter(Boolean).join(' | ')
 
@@ -46,7 +42,11 @@ function formatCanonicalURL(url: string | URL) {
 <link rel="icon" type="image/svg+xml" href="/h.png" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
-<!-- Removed external Font Awesome CSS to avoid extra network/webfont cost -->
+
+<!-- Preconnect to Google Drive image CDN for photography page -->
+<link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin />
+<link rel="preconnect" href="https://www.googleapis.com" crossorigin />
+<link rel="dns-prefetch" href="https://lh3.googleusercontent.com" />
 
 <!-- Consider preloading a real WOFF2 if available; TTF (2.3MB) preload removed -->
 
@@ -54,33 +54,33 @@ function formatCanonicalURL(url: string | URL) {
 <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
 <meta name="description" content={description} />
 
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: siteConfig.author,
+    url: Astro.site,
+    sameAs: siteConfig.socialLinks?.map((l) => l.href) || [],
+    jobTitle: siteConfig.subtitle,
+  })}
+/>
+
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={pageType} />
 <meta property="og:url" content={formatCanonicalURL(canonicalURL)} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 {resolvedImage?.src && <meta property="og:image" content={resolvedImage.src} />}
-{
-  resolvedImage?.alt && (
-    <meta property="og:image:alt" content={resolvedImage.alt} />
-  )
-}
+{resolvedImage?.alt && <meta property="og:image:alt" content={resolvedImage.alt} />}
 
 <!-- X / Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={formatCanonicalURL(canonicalURL)} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-{
-  resolvedImage?.src && (
-    <meta property="twitter:image" content={resolvedImage.src} />
-  )
-}
-{
-  resolvedImage?.alt && (
-    <meta name="twitter:image:alt" content={resolvedImage?.alt} />
-  )
-}
+{resolvedImage?.src && <meta property="twitter:image" content={resolvedImage.src} />}
+{resolvedImage?.alt && <meta name="twitter:image:alt" content={resolvedImage?.alt} />}
 
 <script>
   import nprogress from 'nprogress'

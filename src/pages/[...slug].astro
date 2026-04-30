@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import type { CollectionPages } from '@/types'
 
@@ -9,7 +9,7 @@ export async function getStaticPaths() {
   const pages = await getCollection('pages')
   return pages.map((page) => {
     return {
-      params: { slug: page.slug },
+      params: { slug: page.id.replace(/\.(md|mdx)$/, '') },
       props: { page },
     }
   })
@@ -20,7 +20,7 @@ type Props = { page: CollectionPages }
 const { page } = Astro.props
 const { title, description, image } = page.data
 
-const { Content } = await page.render()
+const { Content } = await render(page)
 ---
 
 <BaseLayout title={title} description={description}>

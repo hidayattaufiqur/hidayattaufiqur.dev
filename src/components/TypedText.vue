@@ -185,8 +185,9 @@ watch(() => props.messages, () => {
 <style scoped>
 /* Ensure font, wrapping and prevent overflow on small screens */
 .tt-wrapper {
-  font-family: '0xProto Nerd Font', ui-monospace, SFMono-Regular, Menlo, Monaco,
-    Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-family:
+    '0xProto Nerd Font', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
   overflow-wrap: anywhere;
 }
 @keyframes caret-blink {

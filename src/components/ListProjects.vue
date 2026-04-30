@@ -7,6 +7,12 @@ defineProps<{
     href: string
   }[]
 }>()
+
+function getTarget(href: string) {
+  if (href.startsWith('http') || href.startsWith('//'))
+    return '_blank'
+  return '_self'
+}
 </script>
 
 <template>
@@ -20,7 +26,7 @@ defineProps<{
       <a
         text-lg lh-tight nav-link
         flex="~ col md:row gap-2 md:items-center"
-        target="_blank"
+        :target="getTarget(project.href)"
         :href="project.href"
         :aria-label="project.text"
       >

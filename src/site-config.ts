@@ -1,12 +1,13 @@
 export const siteConfig = {
   author: 'Hidayat Taufiqur Rahmah Achmad',
-  title: 'Hi!',
-  subtitle: 'Jr. D365FO Dev | Software Engineer | Loves tinkering',
-  description: 'Personal site of Hidayat Taufiqur - Software Engineer specializing in Dynamics 365 Finance and Operations, backend development, and enterprise solutions. Explore my projects, insights, and professional journey',
+  title: 'Hidayat Taufiqur — Backend Engineer',
+  subtitle: 'Backend Engineer • D365FO • Distributed Systems',
+  description: 'Backend engineer focusing on distributed systems, cloud infrastructure, Dynamics 365 Finance & Operations (D365FO), and LLM integrations. 2+ years building production APIs and reliable services.',
   image: {
     src: '/hero.jpg',
-    alt: 'Hidayat Taufiqur - Software Engineer',
+    alt: 'Hidayat Taufiqur - Backend Engineer',
   },
+
   email: 'hidayattaufiqur@gmail.com',
   handle: '@hidayattaufiqur',
   socialLinks: [

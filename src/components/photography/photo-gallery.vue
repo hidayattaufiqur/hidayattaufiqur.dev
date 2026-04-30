@@ -132,7 +132,7 @@ function batchSize(): number {
     const c = nav?.connection
     if (c?.saveData)
       n = Math.max(3, Math.min(n, 5))
-    else if (typeof c?.effectiveType === 'string' && /(slow-)?2g|3g/.test(c.effectiveType))
+    else if (typeof c?.effectiveType === 'string' && /(?:slow-)?2g|3g/.test(c.effectiveType))
       n = Math.max(3, Math.min(n, 6))
     else if (!isMobile.value && c?.effectiveType === '4g' && Number(c?.downlink) > 5)
       n = Math.min(n + 3, 12)
@@ -188,7 +188,7 @@ function normalizeDateString(s?: string | null): Date | null {
     return null
   // Handle EXIF-like "YYYY:MM:DD HH:MM:SS"
   if (/^\d{4}:\d{2}:\d{2}\s+\d{2}:\d{2}:\d{2}$/.test(s)) {
-    const iso = `${s.replace(/^([0-9]{4}):([0-9]{2}):([0-9]{2})\s+/, '$1-$2-$3T')}Z`
+    const iso = `${s.replace(/^(\d{4}):(\d{2}):(\d{2})\s+/, '$1-$2-$3T')}Z`
     const d = new Date(iso)
     return Number.isNaN(d.getTime()) ? null : d
   }
@@ -295,7 +295,7 @@ async function fetchDriveAlbums(apiKey: string, rootFolderId: string) {
       .map((f) => {
         const isShortcutToFolder
           = f.mimeType === 'application/vnd.google-apps.shortcut'
-          && f.shortcutDetails?.targetMimeType === 'application/vnd.google-apps.folder'
+            && f.shortcutDetails?.targetMimeType === 'application/vnd.google-apps.folder'
         const albumId = isShortcutToFolder ? (f.shortcutDetails?.targetId || f.id) : f.id
         return {
           id: albumId,
@@ -1213,7 +1213,7 @@ function restoreState(): boolean {
               class="absolute inset-0 rounded-lg skel"
               aria-hidden="true"
             />
-            <img v-if="p.lqip" :src="p.lqip" class="lqip" aria-hidden="true" :class="loadedThumbs.has(p.id) ? 'lqip-off' : ''">
+            <img v-if="p.lqip" :src="p.lqip" loading="lazy" class="lqip" aria-hidden="true" :class="loadedThumbs.has(p.id) ? 'lqip-off' : ''">
             <img
               :src="p.thumb"
               :alt="`Photo: ${p.title}`"
@@ -1222,6 +1222,7 @@ function restoreState(): boolean {
               :fetchpriority="i < 2 ? 'high' : 'auto'"
               decoding="async"
               referrerpolicy="no-referrer"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               :width="p.width"
               :height="p.height"
               :class="loadedThumbs.has(p.id) ? 'thumb-on' : 'thumb-off'"
@@ -1609,12 +1610,7 @@ function restoreState(): boolean {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.35),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
   transform: translateX(-100%);
   animation: skel-shimmer 1.2s ease-in-out infinite;
 }

@@ -15,11 +15,7 @@ export function getStaticPaths() {
 <BaseLayout title={title} description={description}>
   <Fragment slot="head">
     <link rel="preconnect" href="https://www.googleapis.com" crossorigin />
-    <link
-      rel="preconnect"
-      href="https://lh3.googleusercontent.com"
-      crossorigin
-    />
+    <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin />
     <link rel="preconnect" href="https://drive.google.com" crossorigin />
     <link rel="preconnect" href="https://picsum.photos" crossorigin />
     <link rel="dns-prefetch" href="//www.googleapis.com" />
@@ -30,8 +26,6 @@ export function getStaticPaths() {
   <PhotoGallery client:visible initialAlbumSlug={album} />
   <hr class="hr-line" />
   <p class="text-center opacity-70 text-sm">
-    Use the album filter to switch categories. This page deep-links to “{
-      album
-    }”.
+    Use the album filter to switch categories. This page deep-links to “{album}”.
   </p>
 </BaseLayout>
