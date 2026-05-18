@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import DynamicIslandTOC from '@/components/ui/DynamicIslandTOC.vue'
 import { getCollection, render } from 'astro:content'
 
 export const prerender = true
@@ -23,6 +24,7 @@ const { Content } = await render(project)
 ---
 
 <BaseLayout title={title} description={description}>
+  <DynamicIslandTOC client:load />
   <article class="prose lg:prose-xl">
     <h1>{title}</h1>
     {

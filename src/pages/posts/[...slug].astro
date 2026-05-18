@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import DynamicIslandTOC from '@/components/ui/DynamicIslandTOC.vue'
 import { type CollectionPosts } from '@/types'
 import { getPosts } from '@/utils/posts'
 import { render } from 'astro:content'
@@ -31,6 +32,7 @@ function getDate(date: string) {
 ---
 
 <BaseLayout title={title} description={description} pageType="article">
+  <DynamicIslandTOC client:load />
   <article class="prose">
     <h1>{title}</h1>
     <p op-50>

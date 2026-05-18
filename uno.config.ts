@@ -69,6 +69,7 @@ export default defineConfig({
     'ic:baseline-discord',
     'simple-icons:discord',
     'i-carbon-blog',
+    'i-carbon-close',
     'i-simple-icons-java',
     'i-simple-icons-openjdk',
     'i-simple-icons-n8n',
