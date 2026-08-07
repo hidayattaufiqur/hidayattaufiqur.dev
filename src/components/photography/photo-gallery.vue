@@ -1663,7 +1663,8 @@ function restoreState(): boolean {
   width: 100%;
   padding: 0.25rem 0.75rem;
   display: flex;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
 }
 /* No background or blur to keep it simple and consistent */
 
