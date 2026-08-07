@@ -36,7 +36,7 @@ export const projectData: ProjectData = [
     projects: [
       {
         text: 'FnO Navigator — D365FO Process Navigator',
-        description: 'Static SvelteKit app for navigating D365FO business processes, tracing table relations, and exploring module customisations. Live, source not yet public.',
+        description: 'Static SvelteKit app for navigating D365FO business processes, tracing table relations, and exploring module customisations. Live · source on GitHub.',
         icon: 'i-carbon-enterprise',
         href: '/projects/fno-navigator-case-study',
       },
