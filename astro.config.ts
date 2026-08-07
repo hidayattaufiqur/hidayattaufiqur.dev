@@ -7,6 +7,11 @@ import vue from '@astrojs/vue'
 export default defineConfig({
   output: 'static',
 
+  // Restore Astro <=6 HTML-aware whitespace handling. Astro 7 changed the
+  // default to 'jsx', which collapses spaces between inline elements
+  // (e.g. `<b>Cum Laude</b> in ...`) that wrap across source lines.
+  compressHTML: true,
+
   site: 'https://astro-theme-vitesse.netlify.app/',
   server: {
     port: 1977,

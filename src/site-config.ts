@@ -67,7 +67,7 @@ export const siteConfig = {
       },
       {
         text: 'Resume',
-        href: 'https://drive.google.com/file/d/1lMz83q68I5x6IjLhGO1PKX9qnDcYdqhH/view?usp=sharing',
+        href: 'https://drive.google.com/file/d/1Yn0jkXZOlD8YEyRTPs98w9wZvFTvDOYt/view?usp=sharing',
       },
     ],
   },

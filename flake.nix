@@ -8,7 +8,6 @@
       overlays = [
         (final: prev: rec {
           nodejs = prev.nodejs_24;
-          pnpm = prev.nodePackages.pnpm;
           yarn = (prev.yarn.override { inherit nodejs; });
         })
       ];
@@ -20,14 +19,10 @@
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ node2nix nodejs pnpm yarn ];
+          packages = with pkgs; [ nodejs pnpm yarn ];
 
           shellHook = with pkgs; ''
             echo "`${nodejs}/bin/node --version` environment activated"
-
-            echo
-            echo "installing deps..."
-            npm i
 
             echo
             echo "environment ready."

@@ -518,7 +518,7 @@ async function fetchPhotos(opts?: { background?: boolean }) {
   try {
     // Prefer Google Drive provider if configured, otherwise fallback
     const apiKey = import.meta.env.PUBLIC_GOOGLE_API_KEY
-    const folderId = import.meta.env.PUBLIC_GOOGLE_DRIVE_FOLDER_ID || '1FU8vQo156hzrPVK71zrwN74V0CiBRY5r'
+    const folderId = import.meta.env.PUBLIC_GOOGLE_DRIVE_FOLDER_ID
 
     if (apiKey && folderId) {
       provider.value = 'drive'
