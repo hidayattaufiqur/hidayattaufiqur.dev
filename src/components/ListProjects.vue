@@ -30,10 +30,6 @@ function getTarget(href: string) {
         :href="project.href"
         :aria-label="project.text"
       >
-        <div v-if="project.icon" ml-2 mr-4 pt-2 self-start w-10>
-          <i text-4xl inline-block :class="project.icon" />
-        </div>
-        <div v-else ml-2 mr-4 pt-2 self-start w-10 aria-hidden="true" />
         <div font-normal lh-tight>
           <div><span lh-normal>{{ project.text }}</span></div>
           <div opacity-50 text-sm>{{ project.description }}</div>

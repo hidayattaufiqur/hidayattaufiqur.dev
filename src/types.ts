@@ -13,7 +13,6 @@ export type ProjectData = Array<{
   projects: Array<{
     text: string
     description?: string
-    icon?: string
     href: string
   }>
 }>
