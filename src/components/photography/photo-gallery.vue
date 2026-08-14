@@ -33,8 +33,31 @@ interface Photo {
   altSrc?: string
 }
 
+// Build-time snapshot of the Drive library (see scripts/gen-photo-manifest.js).
+// Renders the first grid from this data with zero network round trips; a
+// background refresh then merges live Drive data on top.
+interface ManifestPhoto {
+  id: string
+  title: string
+  thumb: string
+  lqip?: string
+  width: number
+  height: number
+  exif?: ExifMeta
+  openUrl?: string
+  unsupported?: boolean
+}
+
+interface PhotoManifest {
+  generatedAt: string | null
+  rootFolderId: string
+  albums: DriveAlbum[]
+  allPhotos: ManifestPhoto[]
+  byAlbum: Record<string, ManifestPhoto[]>
+}
+
 // Deep-link: optional initial album slug must be declared before runtime statements
-const props = defineProps<{ initialAlbumSlug?: string | null }>()
+const props = defineProps<{ initialAlbumSlug?: string | null, manifest?: PhotoManifest | null }>()
 
 const photos = ref<Photo[]>([])
 const loading = ref<boolean>(true)
@@ -244,9 +267,17 @@ function pokeUI() {
   showUI.value = true
   if (hideUITimer)
     window.clearTimeout(hideUITimer)
+  // Mobile: fade the chrome sooner so it stays out of the photo
+  const idleMs = window.matchMedia('(max-width: 767px)').matches ? 1400 : 2200
   hideUITimer = window.setTimeout(() => {
     showUI.value = false
-  }, 2200)
+  }, idleMs)
+}
+
+// Mobile: tapping the caption dismisses it immediately (tap-to-toggle)
+function onCaptionClick() {
+  if (window.matchMedia('(max-width: 767px)').matches)
+    showUI.value = false
 }
 
 function slugify(name: string): string {
@@ -513,6 +544,27 @@ function appendUniquePhotos(existing: Photo[], incoming: Photo[]): Photo[] {
   return existing.concat(toAppend)
 }
 
+// Runtime hydration of a build-time manifest entry: derive the lightbox src
+// from the thumb URL (same sizeVariant trick the live fetch uses) so the
+// lightbox works on the very first click. The background refresh replaces
+// these with fully-populated live photos shortly after.
+function hydrateManifestPhoto(p: ManifestPhoto): Photo {
+  const src = p.thumb && !p.unsupported ? sizeVariant(p.thumb, 1600) : ''
+  return {
+    id: p.id,
+    title: p.title,
+    thumb: p.thumb,
+    lqip: p.lqip,
+    src,
+    width: p.width,
+    height: p.height,
+    exif: p.exif || {},
+    altSrc: undefined,
+    openUrl: p.openUrl,
+    unsupported: p.unsupported,
+  } as Photo & { openUrl?: string, unsupported?: boolean }
+}
+
 async function fetchPhotos(opts?: { background?: boolean }) {
   const background = !!opts?.background
   try {
@@ -522,16 +574,35 @@ async function fetchPhotos(opts?: { background?: boolean }) {
 
     if (apiKey && folderId) {
       provider.value = 'drive'
-      // Kick off albums fetch immediately (non-blocking)
-      const albumsPromise = fetchDriveAlbums(apiKey, folderId).catch(() => {})
+      const manifest = props.manifest
+      const manifestOk = !!manifest && manifest.rootFolderId === folderId && manifest.albums.length > 0
 
-      // Default to All Photos view; render first pixels ASAP
-      selectedAlbumId.value = '__ALL__'
-
-      // For the root /photography page (no slug), fetch first page from root folder
-      // to render quickly while the deeper aggregate crawl starts in the background.
-      const doEarlyRoot = !props.initialAlbumSlug
-      if (doEarlyRoot) {
+      // INSTANT first paint: render albums + the first batch straight from the
+      // build-time snapshot. No Drive API round trip blocks the grid.
+      if (manifestOk) {
+        albums.value = manifest.albums
+        selectedAlbumId.value = props.initialAlbumSlug
+          ? (manifest.albums.find(a => a.slug === props.initialAlbumSlug)?.id ?? '__ALL__')
+          : '__ALL__'
+        const targetId = selectedAlbumId.value
+        const snapshot = targetId === '__ALL__'
+          ? manifest.allPhotos
+          : (manifest.byAlbum[targetId] || [])
+        if (snapshot.length) {
+          photos.value = snapshot.map(hydrateManifestPhoto)
+          loading.value = false
+          // Seed the per-album cache so album switches stay instant before the
+          // live refresh fills it. The __ALL__ token is a placeholder so the
+          // load-more path re-initializes the aggregate on demand.
+          for (const [id, items] of Object.entries(manifest.byAlbum))
+            cacheAlbumUpdate(id, items.map(hydrateManifestPhoto), null)
+          if (manifest.allPhotos.length)
+            cacheAlbumUpdate('__ALL__', manifest.allPhotos.map(hydrateManifestPhoto), 'more' as any)
+        }
+      }
+      else if (!props.initialAlbumSlug) {
+        // No manifest (e.g. build without creds): render first pixels from the
+        // root folder while the deeper aggregate crawl starts in the background.
         try {
           const { items } = await fetchDrivePhotos(
             apiKey,
@@ -545,14 +616,31 @@ async function fetchPhotos(opts?: { background?: boolean }) {
         catch {}
       }
 
-      // Start aggregated crawl in background and progressively merge results
+      // Background refresh: keep albums + aggregate fresh and merge into the
+      // snapshot, so photos added to Drive since the last build show up.
       ;(async () => {
         try {
+          const albumsPromise = fetchDriveAlbums(apiKey, folderId).catch(() => {})
           await fetchDriveAllInit(apiKey, folderId, false)
           const fresh = await fetchDriveAllBatch(apiKey, batchSize())
-          if (fresh.length)
-            photos.value = mergeUniquePhotos(photos.value, fresh)
+          // Deep-linked album pages keep their own view: merge the album's
+          // photos, not the whole aggregate.
+          if (fresh.length && !props.initialAlbumSlug) {
+            const merged = mergeUniquePhotos(photos.value, fresh)
+            photos.value = merged
+            // Keep the seeded __ALL__ cache in sync with the refreshed view.
+            if (albumCache.value.__ALL__)
+              albumCache.value.__ALL__.items = merged
+          }
           driveNextPageToken.value = aggregateHasMore() ? 'more' as any : null
+          await albumsPromise
+          if (props.initialAlbumSlug && selectedAlbumId.value && selectedAlbumId.value !== '__ALL__') {
+            const { items, nextPageToken } = await fetchDrivePhotos(apiKey, selectedAlbumId.value, undefined, Math.max(batchSize(), 30))
+            if (items.length)
+              photos.value = mergeUniquePhotos(photos.value, items)
+            cacheAlbumUpdate(selectedAlbumId.value, items, nextPageToken || null)
+            driveNextPageToken.value = nextPageToken || null
+          }
         }
         catch (e) {
           // Preserve existing fallback below if nothing was loaded yet
@@ -560,28 +648,6 @@ async function fetchPhotos(opts?: { background?: boolean }) {
             error.value = (e as any)?.message || 'Failed to load photos'
         }
       })()
-
-      // Await albums; if deep-link slug requested, load that album explicitly
-      await albumsPromise
-      if (props.initialAlbumSlug) {
-        const match = albums.value.find(a => a.slug === props.initialAlbumSlug)
-        if (match) {
-          selectedAlbumId.value = match.id
-          const cached = albumCache.value[match.id]
-          if (cached?.items?.length) {
-            photos.value = cached.items
-            driveNextPageToken.value = cached.nextPageToken
-          }
-          else {
-            const { items, nextPageToken } = await fetchDrivePhotos(apiKey, match.id, undefined, Math.max(batchSize(), 30))
-            photos.value = items
-            driveNextPageToken.value = nextPageToken || null
-            cacheAlbumUpdate(match.id, items, nextPageToken || null)
-          }
-        }
-      }
-
-      // Do not set an error here; background aggregate/album fetches may still populate.
     }
     else {
       provider.value = 'picsum'
@@ -1075,7 +1141,29 @@ async function changeAlbum(id: string) {
     if (apiKey) {
       if (id === '__ALL__') {
         const folderId = rootFolderIdRef.value || import.meta.env.PUBLIC_GOOGLE_DRIVE_FOLDER_ID!
-        await fetchDriveAllInit(apiKey, folderId)
+        // Instant switch from the seeded/live cache; freshen in the background.
+        const cached = albumCache.value.__ALL__
+        if (cached?.items?.length) {
+          photos.value = cached.items
+          driveNextPageToken.value = cached.nextPageToken || ('more' as any)
+          ;(async () => {
+            try {
+              await fetchDriveAllInit(apiKey, folderId, false)
+              const more = await fetchDriveAllBatch(apiKey, batchSize())
+              if (more.length) {
+                const merged = mergeUniquePhotos(photos.value, more)
+                photos.value = merged
+                if (albumCache.value.__ALL__)
+                  albumCache.value.__ALL__.items = merged
+              }
+              driveNextPageToken.value = aggregateHasMore() ? 'more' as any : null
+            }
+            catch {}
+          })()
+        }
+        else {
+          await fetchDriveAllInit(apiKey, folderId)
+        }
       }
       else {
         const cached = albumCache.value[id]
@@ -1357,7 +1445,7 @@ function restoreState(): boolean {
             </button>
           </div>
           <button aria-label="Close" class="ctrl" @click="closeLightbox">
-            <span class="i-ri-close-line text-2xl" />
+            <span class="i-ri-close-line text-xl md:text-2xl" />
           </button>
         </div>
 
@@ -1378,7 +1466,7 @@ function restoreState(): boolean {
           :class="cleanMode ? 'opacity-40' : (showUI ? 'opacity-100' : 'opacity-0 pointer-events-none')"
           @click="showPrev"
         >
-          <span class="i-ri-arrow-left-s-line text-2xl" />
+          <span class="i-ri-arrow-left-s-line text-xl md:text-2xl" />
         </button>
         <button
           aria-label="Next photo"
@@ -1386,13 +1474,14 @@ function restoreState(): boolean {
           :class="cleanMode ? 'opacity-40' : (showUI ? 'opacity-100' : 'opacity-0 pointer-events-none')"
           @click="showNext"
         >
-          <span class="i-ri-arrow-right-s-line text-2xl" />
+          <span class="i-ri-arrow-right-s-line text-xl md:text-2xl" />
         </button>
 
         <!-- Bottom caption with EXIF chips -->
         <div
           class="caption"
           :class="showChrome ? 'opacity-100' : 'opacity-0 pointer-events-none'"
+          @click="onCaptionClick"
         >
           <div class="caption-inner">
             <div class="caption-top">
@@ -1589,7 +1678,18 @@ function restoreState(): boolean {
 }
 
 .caption-chips {
-  --at-apply: mt-2 flex flex-wrap gap-2 opacity-95;
+  /* prettier-ignore */
+  --at-apply: mt-2 flex-wrap gap-2 opacity-95;
+  /* Chips are desktop-only: hide below md so the caption stays a slim strip.
+     (The scoped display:flex below replaces the template's md:flex hidden,
+     which a global utility could not beat.) */
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .caption-chips {
+    display: flex;
+  }
 }
 
 .chip {
@@ -1649,6 +1749,35 @@ function restoreState(): boolean {
   50% {
     opacity: 0.85;
     transform: translateY(-2px);
+  }
+}
+
+/* ---- Mobile lightbox chrome (<768px): compact, translucent, unobtrusive ---- */
+@media (max-width: 767px) {
+  .ctrl {
+    padding: 0.25rem 0.375rem;
+    border-radius: 0.375rem;
+    background: rgba(0, 0, 0, 0.38);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  .ctrl:hover {
+    background: rgba(0, 0, 0, 0.55);
+  }
+  .side-nav {
+    padding: 0.25rem;
+    background: rgba(0, 0, 0, 0.35);
+    border-color: rgba(255, 255, 255, 0.1);
+    opacity: 0.7;
+  }
+  .side-nav:hover {
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 1;
+  }
+  .caption {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  }
+  .caption-inner {
+    padding: 0.375rem 0.625rem 0.5rem;
   }
 }
 </style>

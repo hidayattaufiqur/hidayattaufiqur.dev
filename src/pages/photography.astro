@@ -5,6 +5,39 @@ import PhotoGallery from '@/components/photography/photo-gallery.vue'
 const title = 'Photography'
 const description =
   'Browse photos by album, or view everything at once. Progressive loading keeps it fast even on large albums.'
+
+// Build-time Drive snapshot (see scripts/gen-photo-manifest.js). import.meta.glob
+// keeps plain `astro build` working on a fresh clone where the file may not exist.
+interface ManifestPhoto {
+  id: string
+  title: string
+  thumb: string
+  lqip?: string
+  width: number
+  height: number
+}
+const manifestModules = import.meta.glob('@/data/photography-manifest.json', { eager: true, import: 'default' })
+const manifest =
+  (manifestModules['/src/data/photography-manifest.json'] as
+    | {
+        generatedAt: string | null
+        rootFolderId: string
+        albums: unknown[]
+        allPhotos: ManifestPhoto[]
+        byAlbum: Record<string, ManifestPhoto[]>
+      }
+    | undefined) ?? null
+
+// Preload the first visible thumbnails + their LQIPs so images start
+// downloading during HTML parse, before the island hydrates.
+const preloadThumbs = (manifest?.allPhotos || [])
+  .slice(0, 2)
+  .map((p) => p.thumb)
+  .filter(Boolean)
+const preloadLqips = (manifest?.allPhotos || [])
+  .slice(0, 4)
+  .map((p) => p.lqip)
+  .filter(Boolean)
 ---
 
 <BaseLayout title={title} description={description}>
@@ -12,11 +45,11 @@ const description =
     <link rel="preconnect" href="https://www.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin />
     <link rel="preconnect" href="https://drive.google.com" crossorigin />
-    <link rel="preconnect" href="https://picsum.photos" crossorigin />
     <link rel="dns-prefetch" href="//www.googleapis.com" />
     <link rel="dns-prefetch" href="//lh3.googleusercontent.com" />
     <link rel="dns-prefetch" href="//drive.google.com" />
-    <link rel="dns-prefetch" href="//picsum.photos" />
+    {preloadThumbs.map((href) => <link rel="preload" as="image" href={href} />)}
+    {preloadLqips.map((href) => <link rel="preload" as="image" href={href} />)}
   </Fragment>
-  <PhotoGallery client:visible />
+  <PhotoGallery client:visible manifest={manifest} />
 </BaseLayout>
