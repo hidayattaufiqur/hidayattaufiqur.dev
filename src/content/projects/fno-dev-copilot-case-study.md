@@ -30,7 +30,19 @@ The dataset turned out to contain zero AI-crawl relations. Every entry was restr
 - `explain_element` — everything known about a table: fields, relations, notes
 - `stats` — dataset coverage and verdict counts
 
+Real output from the running server:
+
+![The four tools fno_dev_copilot registers over stdio](fno-dev-copilot-case-study/mcp-tool-surface.png)
+
+![stats: 39,380 relations, 37,612 verified across 5,633 tables](fno-dev-copilot-case-study/dataset-stats.png)
+
+![trace_relation_path finding a verified path from PurchTable to InventTable](fno-dev-copilot-case-study/trace-relation-path.png)
+
 **Integration.** Registered in OpenCode as `/fno` slash commands (`/fno`, `/fno-explore`, `/fno-trace`, `/fno-explain`, `/fno-stats`) and wired into my D365FO architect agent as a mandatory pre-SQL verification step where table, field, and join claims must be checked against the verified dataset before any SQL or X++ is written. The SQL-first principle is enforced at the agent level.
+
+An OpenCode agent answering a real D365FO question against the verified graph:
+
+![OpenCode agent answering a D365FO question with the MCP tools](fno-dev-copilot-case-study/opencode-mcp-session.png)
 
 ### Stack
 
