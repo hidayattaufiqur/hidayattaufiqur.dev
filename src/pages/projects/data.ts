@@ -5,6 +5,12 @@ export const projectData: ProjectData = [
     title: 'Backend & API Development',
     projects: [
       {
+        text: 'FnO Dev Copilot — D365FO MCP Server',
+        description: 'MCP server giving AI agents factually validated D365FO metadata: 37,612 table relations across 5,633 tables, graph path tracing, and zero fabricated entries.',
+        icon: 'i-carbon-robot',
+        href: '/projects/fno-dev-copilot-case-study',
+      },
+      {
         text: 'e-be-tc — Book Exchange API',
         description: 'REST API built with TypeScript, CQRS, DDD, Jest unit tests, GitHub Actions CI/CD, and Swagger + Bruno docs.',
         icon: 'i-carbon-api',
