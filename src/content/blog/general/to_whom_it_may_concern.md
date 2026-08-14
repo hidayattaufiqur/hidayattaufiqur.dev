@@ -12,7 +12,7 @@ your reels, your toks, your tweets,<br>
 they were chaos in my feeds, but i looked forward to the beat.
 
 now the noise is gone, the silence is clear,<br>
-and in the quiet, i’m missing you here.
+and in the quiet, i'm missing you here.
 
 do you miss me too, just a little bit?<br>
-maybe in the stillness, you can’t help but think of it.
+maybe in the stillness, you can't help but think of it.

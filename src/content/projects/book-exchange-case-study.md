@@ -11,7 +11,7 @@ links:
 
 ### Problem
 
-Design and implement a book borrowing and return system for library members — with proper domain logic, clear API contracts, and a codebase that is maintainable and testable from day one.
+Design and implement a book borrowing and return system for library members, with proper domain logic, clear API contracts, and a codebase that is maintainable and testable from day one.
 
 ### Role
 
