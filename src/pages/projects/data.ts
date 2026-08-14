@@ -10,24 +10,9 @@ export const projectData: ProjectData = [
         href: '/projects/fno-dev-copilot-case-study',
       },
       {
-        text: 'e-be-tc — Book Exchange API',
-        description: 'REST API built with TypeScript, CQRS, DDD, Jest unit tests, GitHub Actions CI/CD, and Swagger + Bruno docs.',
-        href: '/projects/book-exchange-case-study',
-      },
-      {
         text: 'NFO — LLM Ontology Generator',
         description: 'LLM-powered Flask backend using LangChain + OpenAI GPT and RAG to generate competency questions for ontology development. Improved generation time by 1.5×.',
         href: '/projects/nfo-ontology-case-study',
-      },
-      {
-        text: 'Telkom Indonesia — Digistar Internship',
-        description: 'Backend APIs in TypeScript integrating BigQuery, SingleStore, and Google Cloud services. Migrated MySQL to SingleStore, improving query performance.',
-        href: '/projects/telkom-internship-case-study',
-      },
-      {
-        text: 'Telkom Indonesia — DBT Program',
-        description: 'Designed and deployed a Go-based API integrating with Camunda to streamline workflow processes as part of an eight-person cross-functional team.',
-        href: '/',
       },
     ],
   },
@@ -82,11 +67,6 @@ export const projectData: ProjectData = [
         description: 'Archive of competitive programming solutions in C++ and Go, including competition entries and practice problems.',
         href: 'https://github.com/hidayattaufiqur/cp-archives',
       },
-      {
-        text: 'e-algo-tc — Algorithm Technical Test',
-        description: 'Solutions to algorithm technical challenges, written in C++ and Python.',
-        href: 'https://github.com/hidayattaufiqur/e-algo-tc',
-      },
     ],
   },
 
@@ -136,4 +116,5 @@ export const projectData: ProjectData = [
     ],
   },
 ]
+
 
