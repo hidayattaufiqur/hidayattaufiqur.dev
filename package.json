@@ -5,7 +5,7 @@
   "scripts": {
     "prepare": "simple-git-hooks",
     "dev": "astro dev --host",
-    "build": "node scripts/gen-woff2.js && astro build && node scripts/postbuild.js",
+    "build": "node scripts/gen-photo-manifest.js && node scripts/gen-woff2.js && astro build && node scripts/postbuild.js",
     "preview": "astro preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

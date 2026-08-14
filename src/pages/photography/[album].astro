@@ -6,6 +6,20 @@ const { album } = Astro.params as { album: string }
 const title = 'Photography'
 const description = 'Browse photos by album from Google Drive folders.'
 
+// Build-time Drive snapshot; deep links resolve against it instantly (no API
+// round trip before first paint). See scripts/gen-photo-manifest.js.
+const manifestModules = import.meta.glob('@/data/photography-manifest.json', { eager: true, import: 'default' })
+const manifest =
+  (manifestModules['/src/data/photography-manifest.json'] as
+    | {
+        generatedAt: string | null
+        rootFolderId: string
+        albums: unknown[]
+        allPhotos: unknown[]
+        byAlbum: Record<string, unknown[]>
+      }
+    | undefined) ?? null
+
 // Static build: pre-render a minimal deep-link. Albums are fetched client-side.
 export function getStaticPaths() {
   return [{ params: { album: 'all' } }]
@@ -17,13 +31,11 @@ export function getStaticPaths() {
     <link rel="preconnect" href="https://www.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin />
     <link rel="preconnect" href="https://drive.google.com" crossorigin />
-    <link rel="preconnect" href="https://picsum.photos" crossorigin />
     <link rel="dns-prefetch" href="//www.googleapis.com" />
     <link rel="dns-prefetch" href="//lh3.googleusercontent.com" />
     <link rel="dns-prefetch" href="//drive.google.com" />
-    <link rel="dns-prefetch" href="//picsum.photos" />
   </Fragment>
-  <PhotoGallery client:visible initialAlbumSlug={album} />
+  <PhotoGallery client:visible initialAlbumSlug={album} manifest={manifest} />
   <hr class="hr-line" />
   <p class="text-center opacity-70 text-sm">
     Use the album filter to switch categories. This page deep-links to “{album}”.
