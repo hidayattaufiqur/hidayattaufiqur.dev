@@ -11,7 +11,7 @@ date: 2026-08-14
 
 D365FO is a huge ERP with thousands of tables, fields, EDTs, enums, relations, classes, and forms. X++ developers have no good AI assistant. Generic copilots are weak on X++ and the D365FO object model, and answering basic questions means opening Visual Studio or digging through sprawling docs: which tables participate in this process, how do two tables relate, what fields does this table have.
 
-There was also a question hanging over the dataset behind my FnO Navigator. Part of the table-relation graph was rumoured to come from an AI web crawl, which can hallucinate, misread, or omit. Before building more tooling on top of it, every relation had to be traced to a source and proven.
+Before building tooling on top of the dataset, every relation had to be traceable to a source and mechanically verified.
 
 ### Role
 
@@ -21,7 +21,7 @@ Solo author. Dataset forensics, the verification pipeline, the MCP server implem
 
 **Verification first.** A pipeline traced every one of the 39,380 relations to a source and labeled it with a verdict, provenance, and reason. Ground truth: a local D365FO 10.0.2645.32 source mirror (12 models), Microsoft Learn, and the high-trust alexdmeyer AX2012 dataset. Nothing was deleted. 7,067 SUSPECT entries went to quarantine, then were resolved or re-reasoned. 39,380 in, 39,380 out.
 
-The dataset turned out to contain zero AI-crawl relations. Every entry was restructured from the alexdmeyer tier. But the pipeline still caught 1,768 SUSPECT relations against real metadata: field sets that differ from actual relations, undocumented tables, even 22 cases where Microsoft's own docs contradicted the metadata. Those stay honestly labeled instead of being silently trusted.
+The provenance check found zero AI-crawl relations in the dataset. Every entry traces to the alexdmeyer tier. But the pipeline still caught 1,768 SUSPECT relations against real metadata: field sets that differ from actual relations, undocumented tables, even 22 cases where Microsoft's own docs contradicted the metadata. Those stay honestly labeled instead of being silently trusted.
 
 **The MCP server.** Python with the official MCP SDK, stdio transport, four tools:
 
