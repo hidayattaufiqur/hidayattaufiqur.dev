@@ -19,7 +19,7 @@ Solo author. Dataset forensics, the verification pipeline, the MCP server implem
 
 ### Solution
 
-**Verification first.** A pipeline traced every one of the 39,380 relations to a source and labeled it with a verdict, provenance, and reason. Ground truth: a local D365FO 10.0.2645.32 source mirror (12 models), Microsoft Learn, and the high-trust alexdmeyer AX2012 dataset. Nothing was deleted. 7,067 SUSPECT entries went to quarantine, then were resolved or re-reasoned. 39,380 in, 39,380 out.
+**Verification first.** A pipeline traced every one of the 39,380 relations to a source and labeled it with a verdict, provenance, and reason. Ground truth: a local D365FO 10.0.2645.32 source mirror (12 models), Microsoft Learn, and the high-trust [alexdmeyer AX2012 dataset](https://alexdmeyer.com/). Nothing was deleted. 7,067 SUSPECT entries went to quarantine, then were resolved or re-reasoned. 39,380 in, 39,380 out.
 
 The provenance check found zero AI-crawl relations in the dataset. Every entry traces to the alexdmeyer tier. But the pipeline still caught 1,768 SUSPECT relations against real metadata: field sets that differ from actual relations, undocumented tables, even 22 cases where Microsoft's own docs contradicted the metadata. Those stay honestly labeled instead of being silently trusted.
 
