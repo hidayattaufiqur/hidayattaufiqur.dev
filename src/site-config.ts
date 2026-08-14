@@ -2,7 +2,7 @@ export const siteConfig = {
   author: 'Hidayat Taufiqur Rahmah Achmad',
   title: 'Hidayat Taufiqur — Backend Engineer',
   subtitle: 'Backend Engineer • D365FO • Distributed Systems',
-  description: 'Backend engineer focusing on distributed systems, cloud infrastructure, Dynamics 365 Finance & Operations (D365FO), and LLM integrations. 2+ years building production APIs and reliable services.',
+  description: 'Backend engineer focusing on distributed systems, cloud infrastructure, Dynamics 365 Finance & Operations (D365FO), and LLM integrations. 3+ years building production APIs and reliable services.',
   image: {
     src: '/hero.jpg',
     alt: 'Hidayat Taufiqur - Backend Engineer',

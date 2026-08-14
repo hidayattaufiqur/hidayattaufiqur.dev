@@ -89,7 +89,7 @@ export const projectData: ProjectData = [
     projects: [
       {
         text: 'cp-archives',
-        description: 'Archive of competitive programming solutions in C++ and Go — includes competition entries and practice problems.',
+        description: 'Archive of competitive programming solutions in C++ and Go, including competition entries and practice problems.',
         icon: 'i-carbon-trophy',
         href: 'https://github.com/hidayattaufiqur/cp-archives',
       },
@@ -149,7 +149,7 @@ export const projectData: ProjectData = [
       },
       {
         text: 'Hospital-Finder',
-        description: 'Java application for finding hospitals — built as a coursework project.',
+        description: 'Java application for finding hospitals, built as a coursework project.',
         icon: 'i-carbon-hospital',
         href: 'https://github.com/hidayattaufiqur/Hospital-Finder',
       },

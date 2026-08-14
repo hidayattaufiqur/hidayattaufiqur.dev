@@ -49,4 +49,4 @@ The dataset turned out to contain zero AI-crawl relations. Every entry was restr
 
 ### Status
 
-Live in my personal setup since 2026-08-14: the `/fno` command set in OpenCode and the D365FO architect agent's verification flow. The VERIFIED-only graph (37,443 edges) powers FnO Navigator's table path finder today.
+Live in my personal setup since 2026-08-14: the `/fno` command set in OpenCode and the D365FO architect agent's verification flow. The VERIFIED-only graph (37,612 edges) powers FnO Navigator's table path finder today.

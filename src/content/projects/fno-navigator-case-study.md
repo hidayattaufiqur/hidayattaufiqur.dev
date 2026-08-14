@@ -29,11 +29,11 @@ The app has three sections:
 
 - **Process Flows** — grouped by D365FO module (AP, AR, Inventory, etc.). Each flow maps the stages of a business process and links to the tables touched at each step.
 - **Table Reference** — searchable list of key D365FO tables with descriptions, fields, and relationships.
-- **Table Path Finder** — given two tables, find how they relate to each other through the data model. The table relationship dataset and the concept for this feature were inspired by [Alex D. Meyer's work](https://alexdmeyer.com/), who published a table relation dataset in one of his GitHub repositories that proved invaluable here.
+- **Table Path Finder** — given two tables, find how they relate to each other through the data model. The table relationship dataset and the concept for this feature came from [Alex D. Meyer's work](https://alexdmeyer.com/): he published a table relation dataset in one of his GitHub repositories, and it proved invaluable here.
 
 ### Stack
 
-- **Framework:** SvelteKit (static adapter — zero server cost, deployable anywhere)
+- **Framework:** SvelteKit (static adapter, zero server cost, deployable anywhere)
 - **Build tool:** Vite
 - **Data:** Static TypeScript data files — curated from hands-on D365FO work
 - **Table relations dataset:** `static/data/fk-map.json` (~2 MB JSON mapping parent tables to FK children with field-level join details, sourced from Microsoft's ax-2012-doc-tools HTML ERD files and Alex Meyer's MicrosoftDynamicsTableAssociations project)
