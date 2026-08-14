@@ -118,14 +118,11 @@
   margin-top: 0.8571429em;
 }
 .prose code {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.875em;
-}
-.prose code::before {
-  content: '`';
-}
-.prose code::after {
-  content: '`';
+  background-color: rgba(125, 125, 125, 0.18);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
 }
 .prose a code {
   color: #111827;
