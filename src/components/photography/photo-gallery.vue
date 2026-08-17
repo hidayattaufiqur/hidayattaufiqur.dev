@@ -84,9 +84,27 @@ function onThumbLoad(id: string) {
   }
 }
 function onThumbError(id: string) {
-  // Consider errored thumbs as loaded to remove skeleton overlay
+  // Consider errored thumbs as loaded to remove skeleton overlay, then
+  // retry once: lh3 /d/ links can transiently 429 under bursty loads
+  // (per-IP rate limit, seen when preloads + imgs fire in parallel).
+  // A short-delayed refetch of the same image via the =w600 variant
+  // (same pixels, different URL) clears the throttle. NOTE: the
+  // drive.google.com/uc endpoint is NOT a viable fallback - Google
+  // blocks cookie-less image requests to it.
   try {
     loadedThumbs.value.add(id)
+    const idx = photos.value.findIndex(p => p.id === id)
+    if (idx >= 0) {
+      const p = photos.value[idx]
+      if (p.thumb && p.thumb.includes('lh3.googleusercontent.com/d/') && /=\w+$/.test(p.thumb)) {
+        const retryUrl = p.thumb.replace(/=\w+$/, '=w600')
+        setTimeout(() => {
+          const i2 = photos.value.findIndex(q => q.id === id)
+          if (i2 >= 0 && photos.value[i2].thumb === p.thumb)
+            photos.value[i2] = { ...photos.value[i2], thumb: retryUrl }
+        }, 1500)
+      }
+    }
   }
   catch {
     // ignore
@@ -777,13 +795,19 @@ async function fetchDrivePhotos(apiKey: string, folderId: string, pageToken?: st
     // Build URLs: use googleusercontent thumbnail as a reliable image host
     const hasThumb = !!f.thumbnailLink
     const isSupported = f.mimeType ? supported.has(f.mimeType) : true
-    const thumb = hasThumb
-      ? sizeVariant(f.thumbnailLink!, 600)
-      : (isSupported ? `https://drive.google.com/uc?export=download&id=${f.id}` : '')
-    const src = hasThumb
-      ? sizeVariant(f.thumbnailLink!, 1600)
-      : (isSupported ? `https://drive.google.com/uc?export=download&id=${f.id}` : '')
-    const lqip = hasThumb ? sizeVariant(f.thumbnailLink!, 24) : undefined
+    // Stable public image host: Drive API thumbnailLink is a SIGNED
+    // drive-storage URL that expires (403 after a few days). lh3 /d/<id>
+    // works for public files and supports the same =sN size suffix.
+    const stableBase = `https://lh3.googleusercontent.com/d/${f.id}`
+    const thumb = isSupported
+      ? `${stableBase}=s600`
+      : (hasThumb ? sizeVariant(f.thumbnailLink!, 600) : '')
+    const src = isSupported
+      ? `${stableBase}=s1600`
+      : (hasThumb ? sizeVariant(f.thumbnailLink!, 1600) : '')
+    const lqip = isSupported
+      ? `${stableBase}=s24`
+      : (hasThumb ? sizeVariant(f.thumbnailLink!, 24) : undefined)
 
     const width = f.imageMediaMetadata?.width || 1600
     const height = f.imageMediaMetadata?.height || 1200

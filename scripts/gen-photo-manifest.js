@@ -186,10 +186,17 @@ async function fetchFolderPhotos(apiKey, folderId, pageSize = PER_FOLDER) {
   return (json.files || []).map((f) => {
     const hasThumb = !!f.thumbnailLink
     const isSupported = f.mimeType ? supported.has(f.mimeType) : true
-    const thumb = hasThumb
-      ? sizeVariant(f.thumbnailLink, 600)
-      : (isSupported ? `https://drive.google.com/uc?export=download&id=${f.id}` : '')
-    const lqip = hasThumb ? sizeVariant(f.thumbnailLink, 24) : undefined
+    // Stable public image host: Drive API thumbnailLink is a SIGNED
+    // drive-storage URL that expires (403 after a few days), which breaks
+    // the whole build-time snapshot. lh3 /d/<id> works for public files
+    // and supports the same =sN size suffix.
+    const stableBase = `https://lh3.googleusercontent.com/d/${f.id}`
+    const thumb = isSupported
+      ? `${stableBase}=s600`
+      : (hasThumb ? sizeVariant(f.thumbnailLink, 600) : '')
+    const lqip = isSupported
+      ? `${stableBase}=s24`
+      : (hasThumb ? sizeVariant(f.thumbnailLink, 24) : undefined)
     const baseTitle = f.description?.trim() || f.name || 'Photo'
     const title = baseTitle.replace(/\.[^/.]+$/, '')
     const rk = extractResourceKey(f.webViewLink, f.thumbnailLink)
