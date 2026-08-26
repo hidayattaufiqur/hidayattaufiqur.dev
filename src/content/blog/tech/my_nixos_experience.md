@@ -129,7 +129,7 @@ services.nginx = {
 
 `security.acme.acceptTerms = true;` and `enableACME = true;` is all I need for Let's Encrypt certs on any vhost. No certbot, no cron, no `--standalone` flag anxiety.
 
-The custom apps running behind nginx — `fno-interactor` and `mc-management` — are also defined as systemd units in the same repo. So adding a new service means writing a `.nix` file, not SSHing in and creating a systemd unit by hand.
+The custom apps running behind nginx — `fno-navigator` and `mc-management` — are also defined as systemd units in the same repo. So adding a new service means writing a `.nix` file, not SSHing in and creating a systemd unit by hand.
 
 #### Minecraft, declaratively
 

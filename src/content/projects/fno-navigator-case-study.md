@@ -9,7 +9,7 @@ links:
   - text: Live App
     href: https://fno.hidayattaufiqur.dev
   - text: Source on GitHub
-    href: https://github.com/hidayattaufiqur/fno-interactor
+    href: https://github.com/hidayattaufiqur/fno-navigator
 ---
 
 ### Problem
@@ -48,4 +48,4 @@ The app has three sections:
 
 ### Status
 
-Live and in active use. Source is publicly available on [GitHub](https://github.com/hidayattaufiqur/fno-interactor).
+Live and in active use. Source is publicly available on [GitHub](https://github.com/hidayattaufiqur/fno-navigator).

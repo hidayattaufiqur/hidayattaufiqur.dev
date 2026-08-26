@@ -91,7 +91,7 @@ The autocomplete for table names also comes out of the same map once it loads �
 
 ### TLDR
 
-FnO Navigator is a static SvelteKit reference app for D365FO. It maps business process flows to the D365FO tables they touch, provides a searchable table reference, and can find relationship paths between any two tables through a 39,380-edge FK graph using BFS. No backend, no database — the entire data layer is static TypeScript. If you work in or around D365FO development and spend time hunting for the answers that the official docs don't surface cleanly, it's at [fno.hidayattaufiqur.dev](https://fno.hidayattaufiqur.dev) and the source is at [github.com/hidayattaufiqur/fno-interactor](https://github.com/hidayattaufiqur/fno-interactor).
+FnO Navigator is a static SvelteKit reference app for D365FO. It maps business process flows to the D365FO tables they touch, provides a searchable table reference, and can find relationship paths between any two tables through a 39,380-edge FK graph using BFS. No backend, no database — the entire data layer is static TypeScript. If you work in or around D365FO development and spend time hunting for the answers that the official docs don't surface cleanly, it's at [fno.hidayattaufiqur.dev](https://fno.hidayattaufiqur.dev) and the source is at [github.com/hidayattaufiqur/fno-navigator](https://github.com/hidayattaufiqur/fno-navigator).
 
 It exists because I needed it while doing the actual work. That tends to be the best reason to build something.
 
@@ -100,7 +100,7 @@ It exists because I needed it while doing the actual work. That tends to be the 
 ### Resources
 
 - [FnO Navigator (live)](https://fno.hidayattaufiqur.dev) — the app itself
-- [fno-interactor on GitHub](https://github.com/hidayattaufiqur/fno-interactor) — source code
+- [fno-navigator on GitHub](https://github.com/hidayattaufiqur/fno-navigator) — source code
 - [Alex D. Meyer's blog](https://alexdmeyer.com/) — credit for the FK dataset approach
 - [MicrosoftDynamicsTableAssociations](https://github.com/ameyer505/MicrosoftDynamicsTableAssociations) — Alex's FK data project
 - [ax-2012-doc-tools](https://github.com/Microsoft/ax-2012-doc-tools) — original Microsoft table relationship data
