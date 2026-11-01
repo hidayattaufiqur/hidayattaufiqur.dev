@@ -4,9 +4,10 @@ import siteConfig from '@/site-config'
 import TypedText from '@/components/TypedText.vue'
 
 const funFacts = [
-  '🔧 X++ by day, Go by night',
+  '🔧 X++ by day, tinkering and exploring by night',
   '🖥️ one flake, three machines, no manual setup',
   '📷 photography: ordinary places, good light',
+  '🗡️ notoriously aggressive Mobile Legends jungler',
   '♟️ cp-archives: competitive programming in C++ and Go',
 ]
 ---
@@ -61,13 +62,12 @@ const funFacts = [
     </p>
 
     <p class="mt-6 text-lg">
-      9 Dots Consulting then handed me D365FO, an ERP I had never opened, and a team patient enough to let me read the
-      code until it made sense. A year and a half in production later the part I enjoy most is still the part I was
-      worst at on day one. Most of the work is reading the standard application until you find where a process actually
-      breaks. My favourite hunt so far was a Power BI refresh that kept hitting the timeout. Nothing in the report
-      pointed anywhere useful. The cause was an unused tax-calculation side effect buried inside the standard
-      exchange-rate call, quietly costing time the whole while. A system never lies to you. It is just answering a
-      question you did not ask.
+      9 Dots Consulting handed me D365FO, an ERP I had never opened and honestly did not know existed. A year and a half
+      in production later the part I enjoy most is still the part I was worst at on day one. Most of the work is reading
+      the standard application until you find where a process actually breaks. My favourite hunt so far was a Power BI
+      refresh that kept hitting the timeout. Nothing in the report pointed anywhere useful. The cause was an unused
+      tax-calculation side effect buried inside the standard exchange-rate call, quietly costing time the whole while. A
+      system never lies to you. It is just answering a question you did not ask.
     </p>
 
     <p class="mt-4 text-lg">
@@ -171,6 +171,28 @@ const funFacts = [
               class="prose-link">Neovim</a
             >, Postman, Notion, AI/Agents
           </dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="not-prose mt-8">
+      <h3 class="text-lg font-bold mb-3">Machines</h3>
+      <dl class="space-y-2 text-sm text-main">
+        <div class="flex gap-3">
+          <dt class="shrink-0 w-48 font-semibold">Desktop</dt>
+          <dd class="opacity-70">Ryzen 5 5600G · RX 6600 · 16GB RAM · 1TB</dd>
+        </div>
+        <div class="flex gap-3">
+          <dt class="shrink-0 w-48 font-semibold">Personal laptop</dt>
+          <dd class="opacity-70">Acer Swift 3 · i5-1135G7 · 16GB RAM · 512GB</dd>
+        </div>
+        <div class="flex gap-3">
+          <dt class="shrink-0 w-48 font-semibold">Work laptop</dt>
+          <dd class="opacity-70">ThinkPad E14 Gen 6 · Core Ultra 7 155U · 32GB RAM · 1TB</dd>
+        </div>
+        <div class="flex gap-3">
+          <dt class="shrink-0 w-48 font-semibold">VPS</dt>
+          <dd class="opacity-70">4 vCPU · 8GB RAM · 160GB · NixOS</dd>
         </div>
       </dl>
     </div>
