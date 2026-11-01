@@ -4,10 +4,10 @@ import siteConfig from '@/site-config'
 import TypedText from '@/components/TypedText.vue'
 
 const funFacts = [
-  '🚀 Associate Technical Consultant',
+  '🚀 Associate Technical Developer',
   'I use Nvim + NixOS, btw 😎',
   'Blue is the colour, Chelsea FC 💙',
-  'Notoriously brutal Mobile Legends jungler 🗡️',
+  'Notoriously aggressive Mobile Legends jungler 🗡️',
 ]
 ---
 
@@ -31,11 +31,12 @@ const funFacts = [
     </p>
 
     <p class="mt-6 text-lg">
-      I'm a <b>Software Engineer</b> with <b>3+ years</b> of experience, currently working as an <b
-        >Associate Technical Consultant</b
-      > in ERP development. I specialize in <b>backend engineering</b> and system design: building APIs, integrating services,
-      and automating workflows. I graduated <b>Cum Laude</b>
-      in Computer Science from Telkom University (GPA 3.76 / 4.00).
+      I'm a <b>Software Engineer</b> with <b>3+ years writing software</b> — the last
+      <b>1.5+ of them shipping D365FO in production</b>. My title is
+      <b>Associate Technical Developer</b> at <b>9 Dots Consulting</b>, though in practice it's half developer, half the
+      person who translates between the code and the functional team. I specialize in
+      <b>backend engineering</b> and system design: building APIs, integrating services, and automating workflows. I graduated
+      <b>Cum Laude</b> in Informatics from Telkom University (GPA 3.76 / 4.00).
     </p>
 
     <p class="mt-4 text-lg">
@@ -45,12 +46,31 @@ const funFacts = [
       I'm too lazy to do.
     </p>
 
+    <p class="mt-4 text-lg">
+      I'm also a notoriously aggressive Mobile Legends jungler. I charge forward like a true knight with Leomord and
+      Barbiel, glide with Benedetta's (my bini gweh) finesse and elegance, then hit and run as the Fourth Hokage,
+      Minato.
+    </p>
+
+    <p class="mt-6 text-lg">
+      Most of what the day job actually is: reading the standard application until you find where a process really
+      breaks. One of my favourite hunts was a Power BI refresh that kept timing out. Nothing in the report pointed
+      anywhere useful; the cause turned out to be an unused tax-calculation side effect hiding inside the standard
+      exchange-rate call. It had been sitting there quietly, costing time, the whole while.
+    </p>
+
+    <p class="mt-4 text-lg">
+      The other half of the work is less glamorous and more satisfying: we replaced a room full of manual order keying
+      with an import that takes five Excel templates, validates them in staging, and creates the orders and lines with
+      optional auto-invoicing. The win wasn't the code. It was people not typing the same numbers twice.
+    </p>
+
     <div class="not-prose mt-8">
       <h3 class="text-lg font-bold mb-3">Experience</h3>
       <dl class="space-y-2 text-sm text-main">
         <div class="flex gap-3">
-          <dt class="shrink-0 w-48 font-semibold">Nine Dots Consulting</dt>
-          <dd class="opacity-70">Associate Technical Consultant · 2025–present</dd>
+          <dt class="shrink-0 w-48 font-semibold">9 Dots Consulting</dt>
+          <dd class="opacity-70">Associate Technical Developer · 2025–present</dd>
         </div>
         <div class="flex gap-3">
           <dt class="shrink-0 w-48 font-semibold">Nusantara Food Ontology</dt>
@@ -80,7 +100,7 @@ const funFacts = [
       <dl class="space-y-1 text-sm text-main">
         <div class="flex gap-3">
           <dt class="shrink-0 w-48 font-semibold">Telkom University</dt>
-          <dd class="opacity-70">B.CompSci · GPA 3.76/4.00 Cum Laude · 2020–2024</dd>
+          <dd class="opacity-70">S.Kom. Informatics · GPA 3.76/4.00 Cum Laude · 2020–2024</dd>
         </div>
       </dl>
       <ul class="mt-3 space-y-1 text-sm opacity-70 list-none pl-0">
@@ -144,14 +164,7 @@ const funFacts = [
 
     <p class="text-lg mt-6">
       Interested in my background? Check my
-      <b
-        ><a
-          href="https://drive.google.com/file/d/1Yn0jkXZOlD8YEyRTPs98w9wZvFTvDOYt/view?usp=sharing"
-          target="_blank"
-          aria-label="View my CV/resume"
-          class="prose-link">CV/resume</a
-        ></b
-      >.
+      <b><a href="/resume.pdf" target="_blank" aria-label="View my CV/resume" class="prose-link">CV/resume</a></b>.
     </p>
 
     <section class="mt-10">
