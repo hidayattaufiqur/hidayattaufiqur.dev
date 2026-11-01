@@ -4,10 +4,10 @@ import siteConfig from '@/site-config'
 import TypedText from '@/components/TypedText.vue'
 
 const funFacts = [
-  '🚀 Associate Technical Developer',
-  'I use Nvim + NixOS, btw 😎',
-  'Blue is the colour, Chelsea FC 💙',
-  'Notoriously aggressive Mobile Legends jungler 🗡️',
+  '🔧 X++ by day, Go by night',
+  '🖥️ one flake, three machines, no manual setup',
+  '📷 photography: ordinary places, good light',
+  '♟️ cp-archives: competitive programming in C++ and Go',
 ]
 ---
 
@@ -31,41 +31,70 @@ const funFacts = [
     </p>
 
     <p class="mt-6 text-lg">
-      I'm a <b>Software Engineer</b> with <b>3+ years writing software</b> — the last
-      <b>1.5+ of them shipping D365FO in production</b>. My title is
-      <b>Associate Technical Developer</b> at <b>9 Dots Consulting</b>, though in practice it's half developer, half the
-      person who translates between the code and the functional team. I specialize in
-      <b>backend engineering</b> and system design: building APIs, integrating services, and automating workflows. I graduated
-      <b>Cum Laude</b> in Informatics from Telkom University (GPA 3.76 / 4.00).
+      My route here was not the tidy one. An apprenticeship in February 2023, an internship at <b>Telkom Indonesia</b>
+      that September, a year of freelance work from March 2024, then a full time role at <b>9 Dots Consulting</b> in March
+      2025, a few months after graduation. Four arrangements in two years, each one a codebase I had to learn while real users
+      already depended on it. That is a faster education than a stable first job would have been, and a lot less comfortable.
     </p>
 
     <p class="mt-4 text-lg">
-      I care about <b>backend architecture</b>, <b>distributed systems</b>, and
-      <b>DevOps practices</b> that keep services fast and observable. Outside work: Mobile Legends, movies, music, guitar,
-      Valorant, and endless tinkering with my dev environment, plus a crew of AI agents I've taught to automate the stuff
-      I'm too lazy to do.
+      I started at <b>Telkom University</b> in 2020 and finished in 2024 with an <b>S.Kom. in Informatics</b>, GPA 3.76,
+      <b>Cum Laude</b>. The transcript is the least interesting thing about those four years. I was a practicum
+      assistant for over <b>250 students</b>, teaching data structures to people who were completely lost. Explaining a
+      linked list to someone who does not see it yet is a stricter test of understanding than any exam. Then
+      <b>Proclub</b>, the campus tech club, first as lead software engineer and later as president. The Teknofest
+      registration portal we built there carried more than a thousand participants. For my thesis I measured HTTP
+      versions against backend application performance, which is how I ended up reading protocol documentation for fun.
     </p>
 
     <p class="mt-4 text-lg">
-      I'm also a notoriously aggressive Mobile Legends jungler. I charge forward like a true knight with Leomord and
-      Barbiel, glide with Benedetta's (my bini gweh) finesse and elegance, then hit and run as the Fourth Hokage,
-      Minato.
+      Telkom Indonesia is where I ran into a system too big to hold in my head. I came in through the DBT program in
+      early 2023 and stayed on as a backend intern, working on a <b>MySQL to SingleStore</b> migration with a team of eight.
+      Queries got meaningfully faster once the data lived where the workload wanted it. The service itself was Go, split along
+      domain boundaries with CQRS and microservices, with a Camunda process API holding the workflows together. Eight people,
+      one architecture, and a lot of arguing about where each boundary belongs. That was the part school never taught.
+    </p>
+
+    <p class="mt-4 text-lg">
+      The freelance year had one project worth naming. <b>Nusantara Food Ontology</b> needed competency questions for a domain
+      ontology, the kind of expert-heavy writing nobody enjoys. I built a Flask backend that drafts them with LangChain, OpenAI,
+      and retrieval over the source material. Generation came out about <b>1.5× faster</b>, and the path from a code
+      change to production got roughly <b>3× faster</b> once GitHub Actions was doing the deploying. The point was never the
+      speed figure. It was an expert spending the hours on ontology design instead of typing questions into a document.
     </p>
 
     <p class="mt-6 text-lg">
-      Most of what the day job actually is: reading the standard application until you find where a process really
-      breaks. One of my favourite hunts was a Power BI refresh that kept timing out. Nothing in the report pointed
-      anywhere useful; the cause turned out to be an unused tax-calculation side effect hiding inside the standard
-      exchange-rate call. It had been sitting there quietly, costing time, the whole while.
+      9 Dots Consulting then handed me D365FO, an ERP I had never opened, and a team patient enough to let me read the
+      code until it made sense. A year and a half in production later the part I enjoy most is still the part I was
+      worst at on day one. Most of the work is reading the standard application until you find where a process actually
+      breaks. My favourite hunt so far was a Power BI refresh that kept hitting the timeout. Nothing in the report
+      pointed anywhere useful. The cause was an unused tax-calculation side effect buried inside the standard
+      exchange-rate call, quietly costing time the whole while. A system never lies to you. It is just answering a
+      question you did not ask.
     </p>
 
     <p class="mt-4 text-lg">
-      The other half of the work is less glamorous and more satisfying: we replaced a room full of manual order keying
-      with an import that takes five Excel templates, validates them in staging, and creates the orders and lines with
-      optional auto-invoicing. The win wasn't the code. It was people not typing the same numbers twice.
+      Not every problem is that interesting. The boring ones are usually the ones people notice. A client was keying
+      sales orders by hand, all day, off spreadsheets. We replaced it with an import that takes five Excel templates,
+      validates everything in staging, then creates the orders and lines with optional auto-invoicing. The code was the
+      easy part. What stays with me is a room of people who stopped retyping the same numbers and got their time back.
     </p>
 
-    <div class="not-prose mt-8">
+    <p class="mt-6 text-lg">
+      On my own time I keep building things nobody asked for. This site and a couple of services run on a VPS I
+      configure declaratively, sharing one flake with my laptop and desktop. I write in Neovim, which is a decision that
+      needs explaining to almost everyone. The largest side project is FnO Navigator, a map of the D365FO table graph,
+      built because the database is thousands of tables deep and Microsoft does not ship a compass. There is also a
+      public archive of competitive programming solutions in C++ and Go.
+    </p>
+
+    <p class="mt-4 text-lg">
+      The rest of my time goes to a guitar I have owned for years and still cannot play properly, Chelsea matches I
+      refuse to miss even at 3am, Valorant with friends when everyone is online, and a Mobile Legends jungle I treat
+      with a seriousness the game does not deserve.
+    </p>
+
+    <div class="not-prose mt-10">
       <h3 class="text-lg font-bold mb-3">Experience</h3>
       <dl class="space-y-2 text-sm text-main">
         <div class="flex gap-3">
@@ -103,11 +132,6 @@ const funFacts = [
           <dd class="opacity-70">S.Kom. Informatics · GPA 3.76/4.00 Cum Laude · 2020–2024</dd>
         </div>
       </dl>
-      <ul class="mt-3 space-y-1 text-sm opacity-70 list-none pl-0">
-        <li>Published research on HTTP versions vs. backend application performance</li>
-        <li>Active in student organisations, university labs, tech communities, and programming competitions</li>
-        <li>Always exploring: a new tool, a side project, or a rabbit hole worth going down</li>
-      </ul>
     </div>
 
     <div class="not-prose mt-8">
@@ -157,18 +181,18 @@ const funFacts = [
     <section class="mt-10">
       <h3 class="text-lg font-bold mb-2">Photography</h3>
       <p class="text-lg">
-        I also enjoy photography: capturing everyday moments, places, and light. Browse a selection of my shots
+        I take photographs of ordinary places and the light that happens to be falling on them. A selection lives
         <a href="/photography" aria-label="See my photography gallery" class="prose-link">here</a>.
       </p>
     </section>
 
     <p class="text-lg mt-6">
-      Interested in my background? Check my
+      The full timeline is in my
       <b><a href="/resume.pdf" target="_blank" aria-label="View my CV/resume" class="prose-link">CV/resume</a></b>.
     </p>
 
     <section class="mt-10">
-      <p class="text-lg">Let's connect:</p>
+      <p class="text-lg">Elsewhere on the internet:</p>
       <div class="flex gap-x-4 gap-y-2 flex-wrap mt-4">
         {
           siteConfig.socialLinks.map((link) => (
@@ -185,7 +209,7 @@ const funFacts = [
         }
       </div>
       <p class="mt-6 text-lg">
-        Or email me at
+        Email me at
         <a
           class="text-blue-500 hover:text-blue-700 transition-colors duration-200"
           aria-label={siteConfig.email}
