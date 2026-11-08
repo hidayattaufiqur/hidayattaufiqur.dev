@@ -32,77 +32,47 @@ const funFacts = [
     </p>
 
     <p class="mt-6 text-lg">
-      My route here was not the tidy one. An apprenticeship, an internship, a year of freelance work, and now a full
-      time role. Four arrangements in a short span, each one a codebase I had to learn while real users already depended
-      on it. That is a faster education than a stable first job would have been, and a lot less comfortable.
+      <b>Associate Technical Developer</b> at <b>9 Dots Consulting</b>, where I ship <b>D365FO</b> in production. I started
+      there never having opened an ERP, so most of the job is reading the standard application until a process finally makes
+      sense. My favourite hunt was a Power BI refresh that kept timing out. Nothing in the report pointed anywhere useful.
+      The cause was an unused tax-calculation side effect sitting inside the standard exchange-rate call, costing everyone
+      time the whole while.
     </p>
 
     <p class="mt-4 text-lg">
-      At <b>Telkom University</b> I spent three semesters as a practicum assistant, teaching data structures and algorithms
-      to over <b>250 students</b>, most of whom were meeting the material for the first time. Explaining a linked list
-      to someone who does not see it yet is a stricter test of understanding than any exam. Outside class I was in the
-      Computing Lab, the Google Developer Student Club, and <b>Proclub</b>. I joined Proclub as a member, got picked as
-      lead software engineer, and later ended up as president. For my thesis I measured HTTP versions against backend
-      application performance.
+      Before that: three semesters as a practicum assistant, teaching data structures and algorithms to over
+      <b>250 students</b>, most of whom were meeting the material for the first time. Then a backend internship at
+      <b>Telkom Indonesia</b>, and a freelance year on <b>Nusantara Food Ontology</b>, building the Flask backend that
+      drafts its competency questions with LangChain and OpenAI.
     </p>
 
     <p class="mt-4 text-lg">
-      Telkom Indonesia is where I first met a system too big to hold in my head. The apprenticeship ran as weekly
-      classes split by role, and I was on the backend path, mostly Go with some Node. At the end they mixed us into
-      cross-role groups with a Telkom engineer as mentor, and our project was a workflow engine for the national
-      business licensing service, built on <b>Camunda</b>. I stayed on afterwards as an intern, working on two internal
-      APIs, mostly in TypeScript because that was what the codebase already used. I also moved one service's data from
-      <b>MySQL to SingleStore</b>: swap the engine, then write queries to prove every row had actually arrived.
+      The side project I keep coming back to is <b>FnO Navigator</b>, a map of the D365FO table graph, because the
+      database is thousands of tables deep and Microsoft does not ship a compass.
     </p>
 
     <p class="mt-4 text-lg">
-      The freelance year had one project worth naming. <b>Nusantara Food Ontology</b> needed competency questions written
-      for a domain ontology, which is slow expert work. I built a Flask backend that drafts them with LangChain, OpenAI, and
-      retrieval over the source material. Generation came out about <b>1.5× faster</b>, and the path from a code change
-      to production got roughly <b>3× faster</b> once GitHub Actions was handling deploys.
+      Off the clock I have supported <b>Chelsea</b> since I was five, which I chose because my older brother already did and
+      I liked the colour. That decision has survived every football game since: Winning Eleven, PES, FIFA, now EA FC, on whatever
+      console or PC I happened to own.
     </p>
 
-    <p class="mt-6 text-lg">
-      9 Dots Consulting handed me D365FO, an ERP I had never opened and honestly did not know existed. A year and a half
-      in production later the part I enjoy most is still the part I was worst at on day one. Most of the work is reading
-      the standard application until you find where a process actually breaks. My favourite hunt so far was a Power BI
-      refresh that kept hitting the timeout. Nothing in the report pointed anywhere useful. The cause was an unused
-      tax-calculation side effect buried inside the standard exchange-rate call, quietly costing time the whole while. A
-      system never lies to you. It is just answering a question you did not ask.
-    </p>
-
-    <p class="mt-4 text-lg">
-      Not every problem is that interesting. The boring ones are usually the ones people notice. A client was keying
-      sales orders by hand, all day, off spreadsheets. We replaced it with an import that takes five Excel templates,
-      validates everything in staging, then creates the orders and lines with optional auto-invoicing. The code was the
-      easy part. What stays with me is a room of people who stopped retyping the same numbers and got their time back.
-    </p>
-
-    <p class="mt-6 text-lg">
-      On my own time I keep building things nobody asked for. This site and a couple of services run on a VPS I
-      configure declaratively, sharing one flake with my laptop and desktop. I write in Neovim, which is a decision that
-      needs explaining to almost everyone. The largest side project is FnO Navigator, a map of the D365FO table graph,
-      built because the database is thousands of tables deep and Microsoft does not ship a compass. There is also a
-      public archive of competitive programming solutions in C++ and Go.
-    </p>
-
-    <p class="mt-6 text-lg">
-      Some things have been running longer. I have supported <b>Chelsea</b> since I was five, which I chose because my older
-      brother already did and I liked the colour. That decision has survived every football game since: Winning Eleven, PES,
-      FIFA, now EA FC, on whatever console or PC I happened to own. Somewhere in between I got into cinematography, though
-      that one stalled on hardware issues and never quite came back. Photography stuck, mostly for the part after the shutter,
-      when the image is still unfinished and the choices are mine.
-    </p>
-
-    <p class="mt-4 text-lg">
-      Before any of that, my brother and I were reading tech magazines cover to cover to see what was coming next,
-      mostly phones. I have followed the evolution of the smartphone as a spectator sport for as long as I can remember,
-      which probably explains the rest of this page. I enjoy listening to music, and what I listen to oftentimes
-      portrays how I feel in that moment. Or maybe what I want to feel at that time. I listen to most genres, but of
-      course some more than the others. I rewatch films that mean something to me more often than I chase new ones.
-      There is also a guitar nearby that I have owned for years and still cannot play properly, a Valorant queue when
-      friends are online, and a Mobile Legends jungle I take far more seriously than the game deserves.
-    </p>
+    <ul class="not-prose mt-4 space-y-2 text-lg">
+      <li>
+        <b>Music</b>: what I listen to oftentimes portrays how I feel in that moment. Or maybe what I want to feel at
+        that time. I listen to most genres, but of course some more than the others.
+      </li>
+      <li>
+        <b>Films</b>: I rewatch the ones that mean something to me more often than I chase new ones.
+      </li>
+      <li>
+        <b>Guitar</b>: I have owned one for years and still cannot play it properly.
+      </li>
+      <li>
+        <b>Games</b>: a Valorant queue when friends are online, and a Mobile Legends jungle I take far more seriously
+        than the game deserves.
+      </li>
+    </ul>
 
     <div class="not-prose mt-10">
       <h3 class="text-lg font-bold mb-3">Experience</h3>
@@ -213,7 +183,8 @@ const funFacts = [
     <section class="mt-10">
       <h3 class="text-lg font-bold mb-2">Photography</h3>
       <p class="text-lg">
-        I take photographs of ordinary places and the light that happens to be falling on them. A selection lives
+        Photography stuck, mostly for the part after the shutter, when the image is still unfinished and the choices are
+        mine. A selection lives
         <a href="/photography" aria-label="See my photography gallery" class="prose-link">here</a>.
       </p>
     </section>
