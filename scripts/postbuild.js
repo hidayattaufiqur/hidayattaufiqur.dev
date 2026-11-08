@@ -63,14 +63,16 @@ const server = http.createServer(async (req, res) => {
       filePath = path.join(filePath, 'index.html')
     }
 
-    // Try file, otherwise SPA-style fallback to root index.html
+    // Missing path: serve 404.html with a real 404 status
     let data
+    let status = 200
     try {
       data = await fs.readFile(filePath)
     } catch {
+      filePath = path.join(root, '404.html')
+      status = 404
       try {
-        data = await fs.readFile(path.join(root, 'index.html'))
-        filePath = path.join(root, 'index.html')
+        data = await fs.readFile(filePath)
       } catch {
         return send(res, 404, 'Not Found')
       }
@@ -78,7 +80,7 @@ const server = http.createServer(async (req, res) => {
 
     const ext = path.extname(filePath).toLowerCase()
     const type = mime.get(ext) || 'application/octet-stream'
-    await send(res, 200, data, { 'content-type': type })
+    await send(res, status, data, { 'content-type': type })
   } catch (e) {
     await send(res, 500, 'Internal Server Error')
   }
